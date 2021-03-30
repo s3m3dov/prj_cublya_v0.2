@@ -1,0 +1,161 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/nav_a';                   // Navbar (A)
+@import '../components/product_card';            // Product Card
+
+main {
+    display: none;
+    @include transition(all $t1 ease-out);
+
+    &.visible {
+        display: block;
+        height: 100%;
+    }
+
+    &.cats {
+        padding: 110px 0px 0px;
+        h1, p {
+            padding: 0 20px;
+        }
+    }
+}
+h1.categories-h {
+    text-align: center;
+    line-height: 45px;
+    @include font-size(25px);
+    margin-top: 18px;
+    border-bottom: 1px solid $c5;
+}
+.boxes-container {
+    @include flex;
+    flex-wrap: wrap;
+}
+.box {
+    width: 50%;
+    height: 50vw;
+    float: left;
+    @include gradient(transparent, 38.73%, $b7, 120%, vertical);
+    &:hover > img {
+        opacity: 0.7;
+    }
+    img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        @include object-position(center);
+        @include object-fit(cover);
+        z-index: -1;
+        @include transition(all $t1 ease-in-out);
+    }
+    p {
+        text-align: center;
+        @include font-size(17px);
+        font-weight: 500;
+        color: $c0;
+        &.cat-txt {
+            padding: 2px 4px;
+            @include transY(-55px);
+        }
+    }
+}
+
+// * Nav Search Form * '
+.nav-search-form-holder {
+    top: -200px;
+    position: absolute;
+    width: calc(100% - 28px) ;
+    margin: 0 10px;
+    @include transition(all $t2 ease-in-out);
+    z-index: -2;
+    @include flex;
+
+    a.back-to-prev {
+        @include flex;
+        align-items: center;
+        padding: 4px;
+        cursor: pointer;
+        margin-right: 5px;
+        display: none;
+        svg.arrow-left {
+            stroke: $c3;
+            width: 28px;
+            height: 28px;
+        }
+    }
+
+    form.nav-search-form {   
+        @include flex;
+        border-bottom: 1px solid $c3;
+        width: 100%;
+        padding-bottom: 4px;
+        margin-left: 10px;
+        // Search Input
+        input#nav-search-inp {
+            color: $c2;
+            position: relative;
+            z-index: 1;
+            height: 40px;
+            width: 100%;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            font-family: $font1;
+            @include font-size(17px);
+            @include flex-order(2);
+            &:-webkit-autofill { 
+                @include transition(99999s);
+            }
+            &::-webkit-search-decoration,
+            &::-webkit-search-cancel-button,
+            &::-webkit-search-results-button,
+            &::-webkit-search-results-decoration {
+                -webkit-appearance:none;
+            }
+            &::-ms-clear, &::-ms-reveal {
+                display: none;
+                width: 0;
+                height: 0; 
+            }
+        }
+        // Reset & Search Icons (Buttons)
+        button.nav-search-form-btn {
+            @include flex-order(3);
+            svg.nav-search-form-icon {
+                width: 20px;
+                height: 20px;
+                stroke: $c3;
+                cursor: pointer;
+            }
+            &:hover >  svg.nav-search-form-icon {
+                stroke: $c1;
+            }
+            &#nav-search-btn {
+                @include flex-order(1);
+                padding-right: 7px;
+                @include transX(-2px);
+            }
+            &#nav-reset-btn {
+                display: none;
+                svg.nav-search-form-icon {
+                    width: 22px;
+                    height: 22px;
+                }
+            } 
+        }
+    }
+
+    // .nav-search-form-holder when visible
+    &.visible {
+        z-index: 2;
+        top: 60px;
+        z-index: 2;
+        background-color: $b1;
+    }
+
+    // nav-search-form-holder when nav-menu opened
+    &.active {
+        opacity: 0.3;
+    }
+}
+
+// Import Search
+@import '../parts/search';

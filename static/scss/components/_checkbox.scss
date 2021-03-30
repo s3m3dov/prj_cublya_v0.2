@@ -1,0 +1,45 @@
+// * Resuable Checkbox Design Setup *
+.checkbox {
+    position: relative;
+    input, svg {
+        width: 20px;
+        height: 20px;
+        display: block;
+    }
+    input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        outline: none;
+        background: $c2;
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 4px;
+        @include transition(box-shadow $t1);
+        margin-right: 18px;
+        &:checked {
+            @include transition($t1 ease);
+            & + svg {
+                --a: 16.1 86.12;
+                --o: 102.22;
+            }
+        }
+    }
+    svg {
+        pointer-events: none;
+        fill: none;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: $b0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include transform(scale(1.2) translateZ(0));
+        stroke-dasharray: var(--a, 86.12);
+        stroke-dashoffset: var(--o, 86.12);
+        transition: stroke-dasharray $t3, stroke-dashoffset $t3;
+    }
+}

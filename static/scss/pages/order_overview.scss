@@ -1,0 +1,77 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/nav_b';                   // Navbar (B)
+
+.order-card {
+    & > div, & > ul {
+        @include flex;
+        align-items: center;
+        padding: 10px 20px;
+        border-bottom: 1px solid $c5;
+        background-color: $b4;
+        &:last-child { 
+            border-bottom: none; 
+        }
+    }
+    .order-head {
+        .left-area {
+            @include flex-direction(column);
+            align-items: flex-start;
+            p.date {
+                color: $c2;
+                font-weight: 600;
+            }
+            .total-price {
+                @include flex;
+                align-items: center;
+                p.total {
+                    margin-right: 4px;
+                    @include font-size(14px);
+                    color: $c3;
+                }
+                p.currency, p.value {
+                    color: $suc4;
+                }
+            }
+        }
+        .right-area > p {
+            color: $suc4;
+            @include font-size(17px);
+        }
+    }
+    .order-imgs {
+        .order-img {
+            margin: 3px;
+            // Removing first-left margin & last-right margin
+            &:first-child { 
+                margin-left: 0 !important; 
+            }
+            &:last-child { 
+                margin-right: 0 !important; 
+            }
+            img {
+                height: 84px;
+                @include object-position(center);
+                @include object-fit(cover);
+                @include border-radius(10px);
+            }
+        }
+    }
+    .order-foot {
+        p.description {
+            @include font-size(14px);
+        }
+        a.see-details {
+            @include flex;
+            align-items: center;
+            span {
+                color: $c1;
+                @include font-size(15px);
+            }
+            svg.outlined {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+}

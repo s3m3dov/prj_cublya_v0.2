@@ -1,0 +1,153 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/nav_b';                   // Navbar (B)
+
+// I want to change the account page
+main {
+    padding: 0 20px;
+}
+
+// * Account Preview *
+.acc-preview {
+    @include flex;
+    align-items: flex-end;
+    padding-top: 20px;
+    // Profile Image
+    .profile-img {
+        img {
+            width: 96px;
+            height: 96px;
+            @include border-radius(50%);
+            //border: 2px solid $c4;
+            margin-right: 25px;
+        }
+    }
+    // Name & Shortcuts 1
+    .name-cuts1 {
+        width: 100%;
+        margin: 10px 0;
+        @include flex;
+        align-items: flex-end;
+        justify-items: flex-end;
+        h1.profile-name {
+            @include font-size(30px);
+            font-weight: 600;
+            width: 100%;
+        }
+        a.settings {
+            @include transY(-60px);
+            @include transition(all $t1 ease-in-out);
+            @include flex;
+            margin-right: -5px;
+            svg {
+                width: 27px;
+                height: 27px;
+            }
+            &:hover {
+                @include transform(scale(1.1) translateY(-56px));
+                fill: $c2;
+            }
+        }
+    }
+}
+
+a.edit-details {
+    @include flex;
+    justify-content: center;
+    margin-top: 15px;
+    background-color: $b6;
+    align-items: center;
+    width: 100%;
+    padding: 10px 15px;
+    border-bottom: 1px solid $c5;
+    @include transition(all $t1 ease-in-out);
+    svg {
+        width: 22px;
+        height: 22px;
+        margin-right: 8px;
+        @include transition(all $t1 ease-in-out);
+    }
+    span {
+        color: $c2;
+        @include font-size(17px);
+        @include transition(all $t1 ease-in-out);
+    }
+
+    &:hover {
+        @include scale(1.02);
+        svg {
+            fill: $c1;
+        }
+        span {
+            color: $c1;
+        }
+    }
+}
+
+.cuts2 {
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid $c4;
+    border-bottom: 1px solid $c4;
+    @include flex;
+    a.cuts2-links {
+        color: $c2;
+        @include flex;
+        @include flex-direction(column);
+        align-items: center;
+        padding: 6px 0;
+        width: 25%;
+        @include transition(all $t1 ease-in-out);
+        svg {
+            width: 27px;
+            height: 27px;
+            margin-bottom: 5px;
+        }
+        span {
+            @include transition(all $t1 ease-in-out);
+            @include font-size(17px);
+        }
+        &:hover {
+            @include scale(1.08);
+            svg {
+                fill: $c1;
+            }
+            span {
+                color: $c1;
+            }
+        }
+    }
+}
+
+// * Other Options * (Shortcuts 3)
+.oth-opts {
+    @include flex;
+    @include flex-direction(column);
+    a.cuts3-links {
+        @include flex;
+        color: $c2;
+        height: 52px;
+        @include transition(all $t1 ease-in-out); // it causes anime problem on desktop
+        margin-bottom: 20px;
+        padding: 0 18px;
+        align-items: center;
+        background-color: $b5;
+        @include border-radius(10px);
+        svg {
+            @include transition(all $t1 ease-in-out);
+            margin-right: 10px;
+        }
+        span {
+            @include transition(all $t1 ease-in-out);
+        }
+        &:hover {
+            @include scale(1.01);
+            svg {
+                fill: $c1;
+            }
+            span {
+                color: $c1;
+            }
+        }
+    }
+}

@@ -1,0 +1,125 @@
+// * Product Card (reusable) *
+// ! Your Product Card Design is unstable
+// When you use it your parent element should be flex-row, or grid
+// Todo For future you can convert it to grid, but this also can be unstable
+.prod-card {
+    flex: none;
+    width: calc(50% - 5px);
+    min-height: 335px;
+    margin: 0 10px;
+    background-color: $b7;
+    // Removing first-left margin & last-right margin
+    &:first-child { 
+        margin-top: 0 !important; 
+        margin-left: 0 !important; 
+    }
+    &:last-child { 
+        margin-bottom: 0 !important; 
+        margin-right: 0 !important; 
+    }
+    // Product top section
+    // portrait, large screen problem
+    .prod-top {
+        height: 70.5%;
+        width: 100%;
+        a.prod-link {
+            display: block;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            img.prod-img {
+                width: 100%;
+                height: 100%;
+                @include object-position(center);
+                @include object-fit(cover);
+                //object-fit: scale-down;
+            }
+        }
+        .disc-badge {
+            position: relative;
+            @include flex;
+            bottom: 95%;
+            z-index: 1;
+            height: 30px;
+            width: 45px;
+            background-color: $b3;
+            span {
+                margin: auto;
+                text-align: center;
+                @include font-size(14px);
+                color: $suc2;
+            }
+        }
+    }
+    .prod-foot {
+        @include flex;
+        @include flex-direction(column);
+        padding: 4px 8px;
+        height: 29.5%;
+        color: $c0;
+        // Brand & Review Part
+        .prod-br-rew {
+            @include flex;
+            align-items: center;
+            h1 {
+                @include font-size(12px);
+                font-weight: 600;
+                line-height: 120%;
+            }
+            a.prod-rew {
+                margin-left: auto;
+                @include flex;
+                align-items: center;
+                svg.rew-star {
+                    fill: $star1;
+                    width: 14px;
+                    height: 14px;
+                }
+                span {
+                    @include font-size(12px);
+                    &.rew-cnt {
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+        // Prod Title
+        h2.prod-title {
+            @include font-size(12px);
+            font-weight: 300;
+            line-height: 120%;
+        }
+        // Price & add to list part
+        .prod-btm {
+            @include flex;
+            margin-top: auto;
+            margin-bottom: 4px;
+            .prod-prices {
+                @include flex;
+                @include flex-direction(column);
+                .price-now {
+                    font-weight: bold;
+                    @include font-size(16px);
+                    line-height: 120%;
+                }
+                .price-before {
+                    color: $c3;
+                    font-weight: 300;
+                    @include font-size(12px);
+                    line-height: 120%;
+                    text-decoration-line: line-through;
+                }
+            }
+            .prod-fav {
+                margin-top: auto;
+                margin-left: auto;
+                svg.fav-icon {
+                    width: 20px;
+                    height: 20px;
+                    stroke-width: 2px;
+                    fill: $b7;
+                }
+            }
+        }
+    }
+}
