@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}[Searched]{% endblock %}
+{% block head_imports %}
+    <link href="{% sass_src 'scss/pages/search_result.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    {% include "parts/nav_a.html" %}
+    
+    <header>
+        <div class="nav-search-form-holder visible">
+            <a class="back-to-prev">
+                <svg viewBox="0 0 24 24" class="outlined arrow-left">
+                    <title>Back to Categories</title>
+                    <path d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </a>
+            <form action="" class="nav-search-form">
+                <input type="search" name="nav-search" id="nav-search-inp" placeholder="Search for items" minlength="2" maxlength="30" autocomplete="off" autocomplete="chrome-off">
+                <button type="submit" class="btn nav-search-form-btn" id="nav-search-btn">
+                    <svg viewBox="0 0 24 24" class="outlined nav-search-form-icon">
+                        <title>Search</title>
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <button type="reset" class="btn nav-search-form-btn" id="nav-reset-btn">
+                    <svg viewBox="0 0 24 24" class="outlined nav-search-form-icon">
+                        <title>Reset</title>
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </form>
+            <div class="search-tools">
+                <div class="search-sort-by">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined">
+                        <path d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4" />
+                    </svg>
+                </div>
+                <div class="search-filter">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined">
+                        <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="search-result" id="search-result">    
+        <ul class="results">
+            <li class="prod-card prod-card-1">
+                <div class="prod-top"> 
+                    <a href="#" class="prod-link">
+                        <img src="img/prods/2.jpg" class="prod-img" alt="nanan" srcset="">
+                    </a>
+                    <div class="disc-badge">
+                        <span>-75%</span>
+                    </div>
+                </div>
+                <div class="prod-foot">
+                    <div class="prod-br-rew">
+                        <h1 class="prod-br">Koton</h1>
+                        <a class="prod-rew">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="filled rew-star" >
+                                <title>Reviews</title>
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <span class="star-cnt">
+                                4.6
+                            </span>
+                            <span href="" class="rew-cnt">
+                                (86)
+                            </span>
+                        </a>
+                    </div>
+                    <h2 class="prod-title">Sorem, Sorem, Sorem, lorex</h2>
+                    <div class="prod-btm">
+                        <div class="prod-prices">
+                            <div class="price-now">
+                                <span class="currency">$</span>
+                                <span class="value">25.00</span>
+                            </div>
+                            <div class="price-before">
+                                <span class="currency">$</span>
+                                <span class="value">100.00</span>
+                            </div>
+                        </div>
+                        <div class="prod-fav">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="outlined fav-icon" viewBox="0 0 24 24">
+                                <title>Add to List</title>
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="prod-card prod-card-2">
+                <div class="prod-top"> 
+                    <a href="#" class="prod-link">
+                        <img src="img/prods/1.jpg" class="prod-img" alt="nanan" srcset="">
+                    </a>
+                    <div class="disc-badge">
+                        <span>-30%</span>
+                    </div>
+                </div>
+                <div class="prod-foot">
+                    <div class="prod-br-rew">
+                        <h1 class="prod-br">Koton</h1>
+                        <a class="prod-rew">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="filled rew-star" >
+                                <title>Reviews</title>
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <span class="star-cnt">
+                                4.6
+                            </span>
+                            <span href="" class="rew-cnt">
+                                (86)
+                            </span>
+                        </a>
+                    </div>
+                    <h2 class="prod-title">Sorem, Sorem, Sorem, lorex</h2>
+                    <div class="prod-btm">
+                        <div class="prod-prices">
+                            <div class="price-now">
+                                <span class="currency">$</span>
+                                <span class="value">70.00</span>
+                            </div>
+                            <div class="price-before">
+                                <span class="currency">$</span>
+                                <span class="value">100.00</span>
+                            </div>
+                        </div>
+                        <div class="prod-fav">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="outlined fav-icon" viewBox="0 0 24 24">
+                                <title>Add to List</title>
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="prod-card prod-card-2">
+                <div class="prod-top"> 
+                    <a href="#" class="prod-link">
+                        <img src="img/prods/1.jpg" class="prod-img" alt="nanan" srcset="">
+                    </a>
+                    <div class="disc-badge">
+                        <span>-50%</span>
+                    </div>
+                </div>
+                <div class="prod-foot">
+                    <div class="prod-br-rew">
+                        <h1 class="prod-br">Koton</h1>
+                        <a class="prod-rew">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="filled rew-star" >
+                                <title>Reviews</title>
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <span class="star-cnt">
+                                4.6
+                            </span>
+                            <span href="" class="rew-cnt">
+                                (86)
+                            </span>
+                        </a>
+                    </div>
+                    <h2 class="prod-title">Sorem, Sorem, Sorem, lorex</h2>
+                    <div class="prod-btm">
+                        <div class="prod-prices">
+                            <div class="price-now">
+                                <span class="currency">$</span>
+                                <span class="value">50.00</span>
+                            </div>
+                            <div class="price-before">
+                                <span class="currency">$</span>
+                                <span class="value">100.00</span>
+                            </div>
+                        </div>
+                        <div class="prod-fav">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="outlined fav-icon" viewBox="0 0 24 24">
+                                <title>Add to List</title>
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/nav_ani.js"></script>
+    <script src="js/search_result.js"></script>
+{% endblock %}

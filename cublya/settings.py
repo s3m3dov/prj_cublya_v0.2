@@ -29,11 +29,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # More Django Apps
+    # More Django Libs
     # 3rd Party
     'sass_processor',
     # Created
-    'app.core', # Core App
+    'app.core',               # Core App
+    'app.customer',           # Customer App  (Authentication, Account & Settings)
+    'app.shopping',           # Shopping App  (Search, Categories, Products)
+    'app.cart',               # Cart App (Cart & Checkout)
+    'app.order',              # Order App
 ]
 
 MIDDLEWARE = [
@@ -101,13 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -122,6 +122,8 @@ STATICFILES_FINDERS = [
 ]
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ BASE_DIR / 'static' ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Sass Processor

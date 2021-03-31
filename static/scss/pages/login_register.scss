@@ -1,4 +1,6 @@
 @import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/social_icons';            // Social Icons
 
 // * Account Form Navs *
 .acc-form-nav {

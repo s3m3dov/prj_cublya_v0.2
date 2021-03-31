@@ -1,11 +1,16 @@
 from django.contrib import admin
 from django.urls import path, include 
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app.core.urls')),
-]
-
+    path('', include(('app.core.urls', 'core'), namespace='core')),
+    path('c/', include(('app.shopping.urls', 'shopping'), namespace='shopping')),
+    path('c/', include(('app.cart.urls', 'cart'), namespace='cart')),
+    path('', include(('app.order.urls', 'order'), namespace='order')),
+    path('customer/', include(('app.customer.urls', 'customer'), namespace='customer')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """
 The `urlpatterns` list routes URLs to views. For more information please see:
