@@ -10,6 +10,8 @@
 {% block content %}
     {% include "parts/nav_a.html" %}
 
+    {% include "parts/searchbar_a.html" %}
+
     <main class="cats visible" id="cats">
         <h1 class="categories-h">Categories</h1>
         <div class="boxes-container">
@@ -22,7 +24,7 @@
         </div>
     </main>
     
-    {% include "parts/search.html" %}
+    {% include "parts/search_layer.html" %}
 {% endblock %}
 
 {% block scripts %}

@@ -2,7 +2,7 @@
 {% load sass_tags %}
 {% load static %}
 
-{% block title %}[Product]{% endblock %}
+{% block title %}{{ product.title }}{% endblock %}
 {% block head_imports %}
     <link href="{% sass_src 'scss/pages/product_page.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
