@@ -12,6 +12,9 @@ urlpatterns = [
     path('customer/', include(('app.customer.urls', 'customer'), namespace='customer')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# {{ request.META.HTTP_REFERER }}
+# Get previous page in template (saves just one page)
+
 """
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/

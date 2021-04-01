@@ -8,7 +8,8 @@
 {% endblock %}
 
 {% block content %}
-    {% include "parts/nav_b.html" %}
+    {% include "parts/nav_b.html" with nav_title="Order Details" %}
+    {# {% url {{prev_url}} %} prev_url='order:orders_overview' #}
     <main>
         <div class="order-info">
             <div class="info-holder">

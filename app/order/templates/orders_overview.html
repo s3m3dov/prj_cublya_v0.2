@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    {% include "parts/nav_b.html" %}
+    {% include "parts/nav_b.html" with nav_title="My Orders" %}
     
     <main>
         <div class="order-card">
@@ -53,7 +53,7 @@
                     <p class="description">2 item(s) have been shipped</p>
                 </div>
                 <div class="right-area">
-                    <a href="order_details.html" class="see-details">
+                    <a href="{% url 'order:order_details' %}" class="see-details">
                         <span>See Details</span>
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="outlined">
                             <title>See Details</title>
@@ -64,8 +64,4 @@
             </div>
         </div>
     </main>
-{% endblock %}
-
-{% block scripts %}
-    <script src="js/open_cart_check.js"></script>
 {% endblock %}

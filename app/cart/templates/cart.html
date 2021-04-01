@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    {% include "parts/nav_b.html" %}
+    {% include "parts/nav_b.html" with nav_title="Shopping Cart" %}
     
     <main class="cc" id="cart">
         <div class="cart-h">
@@ -54,108 +54,62 @@
                     </a>
                 </label>
             </div>
-            <div class="sprod-item">
-                <label class="checkbox">
-                    <input type="checkbox" name="store-name" checked>
-                    <svg viewBox="0 0 21 21">
-                        <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
-                    </svg>
-                </label> 
-                <a class="item-img-link">
-                    <img src="img/prods/1.jpg" class="prod-img" alt="nanan" srcset="">
-                </a>
-                <div class="item-content">
-                    <div class="item-f-row">
-                        <div class="item-info">
-                            <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                            <h2 class="item-h2">Koton</h2>
-                            <p class="item-p">Details: <span>detail</span></p>
-                        </div>
-                        <svg viewBox="0 0 24 24" class="outlined trash">
-                            <title>Delete</title>
-                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+
+            {# Cleaning a bit product details on card/checkout page for readable code #}
+            {% for product in cart_prods %}
+                <div class="sprod-item">
+                    <label class="checkbox">
+                        <input type="checkbox" name="store-name" checked>
+                        <svg viewBox="0 0 21 21">
+                            <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                         </svg>
-                    </div>
-                    <div class="item-l-row">
-                        <div class="item-quantity">
-                            <span>Qty:</span>
-                            <select>
-                                <option selected value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="item-prices">
-                            <div class="bf-price">
-                                <p class="currency">$</p>
-                                <p class="value">150.00</p>
+                    </label> 
+                    <a class="item-img-link" href="{{ product.get_absolute_url }}">
+                        <img src="{{ product.image.url }}" class="prod-img" alt="{{ product.title }}" srcset="">
+                    </a>
+                    <div class="item-content">
+                        <div class="item-f-row">
+                            <div class="item-info">
+                                <h1 class="item-h1">{{ product.title }}</h1>
+                                <h2 class="item-h2">{{ product.brand }}</h2>
+                                <p class="item-p">Details: <span>detail</span></p>
                             </div>
-                            <div class="n-price">
-                                <p class="currency">$</p>
-                                <p class="value">100.00</p>
+                            <svg viewBox="0 0 24 24" class="outlined trash">
+                                <title>Delete</title>
+                                <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </div>
+                        <div class="item-l-row">
+                            <div class="item-quantity">
+                                <span>Qty:</span>
+                                <select>
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            <div class="item-prices">
+                                <div class="bf-price">
+                                    <p class="currency">$</p>
+                                    <p class="value">150.00</p>
+                                </div>
+                                <div class="n-price">
+                                    <p class="currency">$</p>
+                                    <p class="value">{{ product.price }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="sprod-item">
-                <label class="checkbox">
-                    <input type="checkbox" name="store-name" checked>
-                    <svg viewBox="0 0 21 21">
-                        <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
-                    </svg>
-                </label> 
-                <a class="item-img-link">
-                    <img src="img/prods/2.jpg" class="prod-img" alt="nanan" srcset="">
-                </a>
-                <div class="item-content">
-                    <div class="item-f-row">
-                        <div class="item-info">
-                            <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                            <h2 class="item-h2">Koton</h2>
-                            <p class="item-p">Details: <span>detail</span></p>
-                        </div>
-                        <svg viewBox="0 0 24 24" class="outlined trash">
-                            <title>Delete</title>
-                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                    </div>
-                    <div class="item-l-row">
-                        <div class="item-quantity">
-                            <span>Qty:</span>
-                            <select>
-                                <option selected value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="item-prices">
-                            <div class="bf-price">
-                                <p class="currency">$</p>
-                                <p class="value">150.00</p>
-                            </div>
-                            <div class="n-price">
-                                <p class="currency">$</p>
-                                <p class="value">100.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+
             <div class="sprods-foot">
                 <div class="sprods-sh-det">
                     <p>Details</p>
@@ -203,109 +157,62 @@
                     </a>
                 </label>
             </div>
-            <div class="sprod-item">
-                <label class="checkbox">
-                    <input type="checkbox" name="store-name" checked>
-                    <svg viewBox="0 0 21 21">
-                        <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
-                    </svg>
-                </label> 
-                <a class="item-img-link">
-                    <img src="img/prods/1.jpg" class="prod-img" alt="nanan" srcset="">
-                </a>
 
-                <div class="item-content">
-                    <div class="item-f-row">
-                        <div class="item-info">
-                            <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                            <h2 class="item-h2">Koton</h2>
-                            <p class="item-p">Details: <span>detail</span></p>
-                        </div>
-                        <svg viewBox="0 0 24 24" class="outlined trash">
-                            <title>Delete</title>
-                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            {# Cleaning a bit product details on card/checkout page for readable code #}
+            {% for product in cart_prods %}
+                <div class="sprod-item">
+                    <label class="checkbox">
+                        <input type="checkbox" name="store-name" checked>
+                        <svg viewBox="0 0 21 21">
+                            <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                         </svg>
-                    </div>
-                    <div class="item-l-row">
-                        <div class="item-quantity">
-                            <span>Qty:</span>
-                            <select>
-                                <option selected value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="item-prices">
-                            <div class="bf-price">
-                                <p class="currency">$</p>
-                                <p class="value">150.00</p>
+                    </label> 
+                    <a class="item-img-link" href="{{ product.get_absolute_url }}">
+                        <img src="{{ product.image.url }}" class="prod-img" alt="{{ product.title }}" srcset="">
+                    </a>
+                    <div class="item-content">
+                        <div class="item-f-row">
+                            <div class="item-info">
+                                <h1 class="item-h1">{{ product.title }}</h1>
+                                <h2 class="item-h2">{{ product.brand }}</h2>
+                                <p class="item-p">Details: <span>detail</span></p>
                             </div>
-                            <div class="n-price">
-                                <p class="currency">$</p>
-                                <p class="value">100.00</p>
+                            <svg viewBox="0 0 24 24" class="outlined trash">
+                                <title>Delete</title>
+                                <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </div>
+                        <div class="item-l-row">
+                            <div class="item-quantity">
+                                <span>Qty:</span>
+                                <select>
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            <div class="item-prices">
+                                <div class="bf-price">
+                                    <p class="currency">$</p>
+                                    <p class="value">150.00</p>
+                                </div>
+                                <div class="n-price">
+                                    <p class="currency">$</p>
+                                    <p class="value">{{ product.price }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="sprod-item">
-                <label class="checkbox">
-                    <input type="checkbox" name="store-name" checked>
-                    <svg viewBox="0 0 21 21">
-                        <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
-                    </svg>
-                </label> 
-                <a class="item-img-link">
-                    <img src="img/prods/2.jpg" class="prod-img" alt="nanan" srcset="">
-                </a>
-                <div class="item-content">
-                    <div class="item-f-row">
-                        <div class="item-info">
-                            <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                            <h2 class="item-h2">Koton</h2>
-                            <p class="item-p">Details: <span>detail</span></p>
-                        </div>
-                        <svg viewBox="0 0 24 24" class="outlined trash">
-                            <title>Delete</title>
-                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                    </div>
-                    <div class="item-l-row">
-                        <div class="item-quantity">
-                            <span>Qty:</span>
-                            <select>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option selected value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="item-prices">
-                            <div class="bf-price">
-                                <p class="currency">$</p>
-                                <p class="value">150.00</p>
-                            </div>
-                            <div class="n-price">
-                                <p class="currency">$</p>
-                                <p class="value">100.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+
             <div class="sprods-foot">
                 <div class="sprods-sh-det">
                     <p>Details</p>
@@ -394,7 +301,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="checkout.html" class="c-btn">
+                <a href="{% url 'cart:checkout' %}" class="c-btn">
                     <p>Checkout</p>
                     <svg viewBox="0 0 24 24" class="outlined">
                         <title>Checkout</title>

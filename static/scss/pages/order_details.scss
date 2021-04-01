@@ -1,6 +1,7 @@
 @import '../config/config';                      // Colors, Fonts, Mixins
 @import '../config/general';                     // General Styling
 @import '../components/nav_b';                   // Navbar (B)
+@import '../components/buttons';                 // Buttons
 
 main > div {
     margin-bottom: 20px;

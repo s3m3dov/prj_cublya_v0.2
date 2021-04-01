@@ -8,7 +8,8 @@
 {% endblock %}
 
 {% block content %}
-    {% include "parts/nav_b.html" %}
+    {% include "parts/nav_b.html" with nav_title="Order Confirmation"  %}
+
     <main class="cc" id="checkout">
         <div class="previous-infos">
             <div class="previous-info ship">
@@ -71,96 +72,55 @@
                     </a>
                 </label>
             </div>
-            <div class="sprod-item">
-                <a class="item-img-link">
-                    <img src="img/prods/1.jpg" class="prod-img" alt="nanan" srcset="">
-                </a>
-                <div class="item-content">
-                    <div class="item-f-row">
-                        <div class="item-info">
-                            <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                            <h2 class="item-h2">Koton</h2>
-                            <p class="item-p">Details: <span>detail</span></p>
-                        </div>
-                        <svg viewBox="0 0 24 24" class="outlined trash">
-                            <title>Delete</title>
-                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                    </div>
-                    <div class="item-l-row">
-                        <div class="item-quantity">
-                            <span>Qty:</span>
-                            <select>
-                                <option selected value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="item-prices">
-                            <div class="bf-price">
-                                <p class="currency">$</p>
-                                <p class="value">150.00</p>
+
+            {% for product in cart_prods %}
+                <div class="sprod-item">
+                    <a class="item-img-link" href="{{ product.get_absolute_url }}">
+                        <img src="{{ product.image.url }}" class="prod-img" alt="{{ product.title }}" srcset="">
+                    </a>
+                    <div class="item-content">
+                        <div class="item-f-row">
+                            <div class="item-info">
+                                <h1 class="item-h1">{{ product.title }}</h1>
+                                <h2 class="item-h2">{{ product.brand }}</h2>
+                                <p class="item-p">Details: <span>detail</span></p>
                             </div>
-                            <div class="n-price">
-                                <p class="currency">$</p>
-                                <p class="value">100.00</p>
+                            <svg viewBox="0 0 24 24" class="outlined trash">
+                                <title>Delete</title>
+                                <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </div>
+                        <div class="item-l-row">
+                            <div class="item-quantity">
+                                <span>Qty:</span>
+                                <select>
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="sprod-item">
-                <a class="item-img-link">
-                    <img src="img/prods/2.jpg" class="prod-img" alt="nanan" srcset="">
-                </a>
-                <div class="item-content">
-                    <div class="item-f-row">
-                        <div class="item-info">
-                            <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                            <h2 class="item-h2">Koton</h2>
-                            <p class="item-p">Details: <span>detail</span></p>
-                        </div>
-                        <svg viewBox="0 0 24 24" class="outlined trash">
-                            <title>Delete</title>
-                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                    </div>
-                    <div class="item-l-row">
-                        <div class="item-quantity">
-                            <span>Qty:</span>
-                            <select>
-                                <option selected value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="item-prices">
-                            <div class="bf-price">
-                                <p class="currency">$</p>
-                                <p class="value">150.00</p>
-                            </div>
-                            <div class="n-price">
-                                <p class="currency">$</p>
-                                <p class="value">100.00</p>
+                            <div class="item-prices">
+                                <div class="bf-price">
+                                    <p class="currency">$</p>
+                                    <p class="value">150.00</p>
+                                </div>
+                                <div class="n-price">
+                                    <p class="currency">$</p>
+                                    <p class="value">{{ product.price }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
+
             <div class="sprods-foot">
                 <div class="sprods-sh-det">
                     <p>Details</p>
@@ -222,7 +182,6 @@
             </div>
         </div>
 
-        <!-- Product 2 -->
         <div class="sprods">
             <div class="sprods-head">
                 <label for="store-name" class="store-name">
@@ -243,97 +202,55 @@
                     </a>
                 </label>
             </div>
-            <div class="sprod-item">
-                <a class="item-img-link">
-                    <img src="img/prods/1.jpg" class="prod-img" alt="nanan" srcset="">
-                </a>
 
-                <div class="item-content">
-                    <div class="item-f-row">
-                        <div class="item-info">
-                            <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                            <h2 class="item-h2">Koton</h2>
-                            <p class="item-p">Details: <span>detail</span></p>
-                        </div>
-                        <svg viewBox="0 0 24 24" class="outlined trash">
-                            <title>Delete</title>
-                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                    </div>
-                    <div class="item-l-row">
-                        <div class="item-quantity">
-                            <span>Qty:</span>
-                            <select>
-                                <option selected value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="item-prices">
-                            <div class="bf-price">
-                                <p class="currency">$</p>
-                                <p class="value">150.00</p>
+            {% for product in cart_prods %}
+                <div class="sprod-item">
+                    <a class="item-img-link" href="{{ product.get_absolute_url }}">
+                        <img src="{{ product.image.url }}" class="prod-img" alt="{{ product.title }}" srcset="">
+                    </a>
+                    <div class="item-content">
+                        <div class="item-f-row">
+                            <div class="item-info">
+                                <h1 class="item-h1">{{ product.title }}</h1>
+                                <h2 class="item-h2">{{ product.brand }}</h2>
+                                <p class="item-p">Details: <span>detail</span></p>
                             </div>
-                            <div class="n-price">
-                                <p class="currency">$</p>
-                                <p class="value">100.00</p>
+                            <svg viewBox="0 0 24 24" class="outlined trash">
+                                <title>Delete</title>
+                                <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </div>
+                        <div class="item-l-row">
+                            <div class="item-quantity">
+                                <span>Qty:</span>
+                                <select>
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="sprod-item">
-                <a class="item-img-link">
-                    <img src="img/prods/2.jpg" class="prod-img" alt="nanan" srcset="">
-                </a>
-                <div class="item-content">
-                    <div class="item-f-row">
-                        <div class="item-info">
-                            <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                            <h2 class="item-h2">Koton</h2>
-                            <p class="item-p">Details: <span>detail</span></p>
-                        </div>
-                        <svg viewBox="0 0 24 24" class="outlined trash">
-                            <title>Delete</title>
-                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                    </div>
-                    <div class="item-l-row">
-                        <div class="item-quantity">
-                            <span>Qty:</span>
-                            <select>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option selected value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                        <div class="item-prices">
-                            <div class="bf-price">
-                                <p class="currency">$</p>
-                                <p class="value">150.00</p>
-                            </div>
-                            <div class="n-price">
-                                <p class="currency">$</p>
-                                <p class="value">100.00</p>
+                            <div class="item-prices">
+                                <div class="bf-price">
+                                    <p class="currency">$</p>
+                                    <p class="value">150.00</p>
+                                </div>
+                                <div class="n-price">
+                                    <p class="currency">$</p>
+                                    <p class="value">{{ product.price }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
+
             <div class="sprods-foot">
                 <div class="sprods-sh-det">
                     <p>Details</p>
@@ -463,7 +380,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="index.html" class="c-btn">
+                <a href="{% url 'core:home' %}" class="c-btn">
                     <p>Place Order</p>
                     <svg viewBox="0 0 24 24" class="outlined">
                         <title>Place Order</title>
@@ -476,5 +393,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="js/open_cart_check.js"></script>
+    <script src="{% static 'js/open_cart_check.js' %}"></script>
 {% endblock %}    

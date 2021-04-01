@@ -1,13 +1,18 @@
 <header>
     <nav>
         <div class="acc-nav">
-            <a class="nav-icon-area left-zero-area" href="[previous page]">
+            <a 
+                class="nav-icon-area left-zero-area" 
+                href={{ prev_url }}
+            >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-icon outlined" id="left-arrow">
                     <title> Previous Page </title>
                     <path d="M15 19l-7-7 7-7" />
                 </svg>
             </a>
-            <h2 class="nav-left-h">[Page Title]</h2>
+            <h2 class="nav-left-h">
+                {{ nav_title }}
+            </h2>
             <a class="nav-icon-area right-zero-area">
                 <svg class="logo-c" viewBox="0 0 21 24" xmlns="http://www.w3.org/2000/svg">
                     <title>Cublya Icon</title>
