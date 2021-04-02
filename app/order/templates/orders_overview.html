@@ -11,57 +11,50 @@
     {% include "parts/nav_b.html" with nav_title="My Orders" %}
     
     <main>
-        <div class="order-card">
-            <div class="order-head">
-                <div class="left-area">
-                    <p class="date">22 January 2021</p>
-                    <div class="total-price">
-                        <p class="total">Total:</p>
-                        <p class="currency">$</p>
-                        <p class="value">233.12</p>
+        
+        {% for order in request.user.orders.all %}
+            <div class="order-card">
+                <div class="order-head">
+                    <div class="left-area">
+                        <p class="date">{{ order.ordered_date|date:"j F Y, l" }}</p>
+                        <div class="total-price">
+                            <p class="total">Total:</p>
+                            <p class="currency">$</p>
+                            <p class="value">{{ order.get_total_price }}</p>
+                        </div>
+                    </div>
+                    <div class="right-area">
+                        <p>Shipped</p>
                     </div>
                 </div>
-                <div class="right-area">
-                    <p>Shipped</p>
+
+                <ul class="order-imgs sx-cont">
+                    {% for order_item in order.items.all %}
+                        <li class="order-img">
+                            <img src="{{ order_item.product.image.url }}" alt="{{ order_item.product.title }}">
+                        </li>
+                    {% endfor %}
+                    
+
+                </ul>
+
+                <div class="order-foot">
+                    <div class="left-area">
+                        <p class="description">
+                            {{ order.get_total_quantity }} item(s) have been shipped
+                        </p>
+                    </div>
+                    <div class="right-area">
+                        <a href="{{ order.get_absolute_path }}" class="see-details">
+                            <span>See Details</span>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="outlined">
+                                <title>See Details</title>
+                                <path d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <ul class="order-imgs sx-cont">
-                <li class="order-img">
-                    <img src="img/prods/1.jpg" alt="nanan" srcset="">
-                </li>
-                <li class="order-img">
-                    <img src="img/prods/1.jpg" alt="nanan" srcset="">
-                </li>
-                <li class="order-img">
-                    <img src="img/prods/1.jpg" alt="nanan" srcset="">
-                </li>
-                <li class="order-img">
-                    <img src="img/prods/1.jpg" alt="nanan" srcset="">
-                </li>
-                <li class="order-img">
-                    <img src="img/prods/1.jpg" alt="nanan" srcset="">
-                </li>
-                <li class="order-img">
-                    <img src="img/prods/1.jpg" alt="nanan" srcset="">
-                </li>
-                <li class="order-img">
-                    <img src="img/prods/1.jpg" alt="nanan" srcset="">
-                </li>
-            </ul>
-            <div class="order-foot">
-                <div class="left-area">
-                    <p class="description">2 item(s) have been shipped</p>
-                </div>
-                <div class="right-area">
-                    <a href="{% url 'order:order_details' %}" class="see-details">
-                        <span>See Details</span>
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="outlined">
-                            <title>See Details</title>
-                            <path d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </main>
 {% endblock %}

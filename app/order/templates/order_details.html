@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load sass_tags %}
+{% load mathfilters %}
 {% load static %}
 
 {% block title %}Order Details{% endblock %}
@@ -9,26 +10,26 @@
 
 {% block content %}
     {% include "parts/nav_b.html" with nav_title="Order Details" %}
-    {# {% url {{prev_url}} %} prev_url='order:orders_overview' #}
+    
     <main>
         <div class="order-info">
             <div class="info-holder">
                 <p class="descr">Order Number:</p>
-                <p class="text">13246573625</p>
+                <p class="text">{{ order.id }}</p>
             </div>
             <div class="info-holder">
                 <p class="descr">Order Date:</p>
-                <p class="text">17 November 2020</p>
+                <p class="text">{{ order.ordered_date|date:"j F Y, l H:i" }}</p>
             </div>
             <div class="info-holder">
                 <p class="descr">Order Summary:</p>
-                <p class="text">2 delivery, 4 products</p>
+                <p class="text">[2] deliveries, {{ order.get_total_quantity }} products</p>
             </div>
             <div class="info-holder">
                 <p class="descr">Total:</p>
                 <div class="price">
                     <p class="currency total">$</p>
-                    <p class="value total">233.12</p>
+                    <p class="value total">{{ order.get_total_price }}2</p>
                 </div>
             </div>
         </div>
@@ -46,7 +47,7 @@
                 <div class="right-area">
                     <div class="info-holder">
                         <p class="descr">No:</p>
-                        <p class="text">123123123421</p>
+                        <p class="text">[123123123421]</p>
                     </div>
                 </div>
             </div>
@@ -108,44 +109,27 @@
                 </div>
             </div>
             <div class="order-details-container">
-                <div class="sprod-item">
-                    <a class="item-img-link">
-                        <img src="img/prods/1.jpg" class="prod-img" alt="nanan" srcset="">
-                    </a>
-                    <div class="item-content">
-                        <div class="item-f-row">
-                            <div class="item-info">
-                                <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                                <h2 class="item-h2">Koton</h2>
-                                <p class="item-p">Details: <span>detail</span></p>
+                {% for order_item in order.items.all %}
+                    <div class="sprod-item">
+                        <a class="item-img-link" href="{{ order_item.product.get_absolute_url }}">
+                            <img src="{{ order_item.product.image.url }}" class="prod-img" alt="{{ order_item.product.title }}">
+                        </a>
+                        <div class="item-content">
+                            <div class="item-f-row">
+                                <div class="item-info">
+                                    <h1 class="item-h1">{{ order_item.product.title }}</h1>
+                                    <h2 class="item-h2">{{ order_item.product.brand }}</h2>
+                                    <p class="item-p">Details: <span>detail</span></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="price">
-                            <p class="currency">$</p>
-                            <p class="value">100.00</p>
-                        </div>
-                        <a href="" class="small-btn"><p>Review</p></a>
-                    </div>
-                </div>
-                <div class="sprod-item">
-                    <a class="item-img-link">
-                        <img src="img/prods/1.jpg" class="prod-img" alt="nanan" srcset="">
-                    </a>
-                    <div class="item-content">
-                        <div class="item-f-row">
-                            <div class="item-info">
-                                <h1 class="item-h1">TMA-2 Comfort Wireless</h1>
-                                <h2 class="item-h2">Koton</h2>
-                                <p class="item-p">Details: <span>detail</span></p>
+                            <div class="price">
+                                <p class="currency">$</p>
+                                <p class="value">{{ order_item.actual_price|div:order_item.quantity }}</p>
                             </div>
+                            <a href="{{ order_item.product.get_absolute_url }}" class="small-btn"><p>Review</p></a>
                         </div>
-                        <div class="price">
-                            <p class="currency">$</p>
-                            <p class="value">100.00</p>
-                        </div>
-                        <a href="" class="small-btn"><p>Review</p></a>
                     </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="vendors">
                 <div class="holder">
@@ -198,11 +182,11 @@
             </div>
             <div class="order-details-container">
                 <div class="info-holder">
-                    <p class="descr">Costumer:</p>
-                    <p class="text">Hikmat Samadov</p>
+                    <p class="descr">Customer:</p>
+                    <p class="text">{{order.first_name}} {{order.last_name}}</p>
                 </div>
-                <p class="descr">Keshla, Nizami Abdullayev 4/41D</p>
-                <p class="descr">Baku, Azerbaijan</p>
+                <p class="descr">{{ order.address }}</p>
+                <p class="descr">{{order.city}}, {{order.country}}</p>
             </div>
         </div>
 
@@ -228,21 +212,21 @@
                     <p class="descr">Subtotal</p>
                     <div class="right-area">
                         <p class="currency">$</p>
-                        <p class="value">115.00</p>
+                        <p class="value">{{ order.get_subtotal_price|floatformat:2 }}</p>
                     </div>
                 </div>
                 <div class="info-holder">
                     <p class="descr">Shipping</p>
                     <div class="right-area">
                         <p class="currency">$</p>
-                        <p class="value">10.00</p>
+                        <p class="value">[10.00]</p>
                     </div>
                 </div>
                 <div class="info-holder">
                     <p class="descr">Tax</p>
                     <div class="right-area">
                         <p class="currency">$</p>
-                        <p class="value">11.40</p>
+                        <p class="value">[11.40]</p>
                     </div>
                 </div>
                 <div class="info-holder" id="discount">
@@ -250,21 +234,17 @@
                     <div class="right-area">
                         <p class="sign discount">-</p>
                         <p class="currency discount">$</p>
-                        <p class="value discount">11.40</p>
+                        <p class="value discount">{{ order.get_discount|floatformat:2  }}</p>
                     </div>
                 </div>
                 <div class="info-holder total-info" id="discount">
                     <p class="descr">Total</p>
                     <div class="right-area">
                         <p class="currency">$</p>
-                        <p class="value">11.40</p>
+                        <p class="value">{{ order.get_total_price|floatformat:2  }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-{% endblock %}
-
-{% block scripts %}
-    <script src="{% static 'js/open_cart_check.js' %}"></script>
 {% endblock %}

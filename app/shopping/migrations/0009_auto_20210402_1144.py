@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='product',
-            name='current_price',
+            name='actual_price',
             field=models.DecimalField(blank=True, decimal_places=2, max_digits=7, null=True),
         ),
     ]

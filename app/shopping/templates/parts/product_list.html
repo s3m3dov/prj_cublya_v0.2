@@ -1,5 +1,3 @@
-{% load mathfilters %}
-
 {% for product in list_products %}
     <li class="prod-card">
         <div class="prod-top">
@@ -29,7 +27,7 @@
                 <div class="prod-prices">
                     <div class="price-now">
                         <span class="currency">$</span>
-                        <span class="value">{{ product.current_price }}</span>
+                        <span class="value">{{ product.actual_price }}</span>
                     </div>
                     {% if product.discount > 0 %}
                         <div class="price-before">

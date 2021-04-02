@@ -96,13 +96,15 @@
                                 </select>
                             </div>
                             <div class="item-prices">
-                                <div class="bf-price">
-                                    <p class="currency">$</p>
-                                    <p class="value">150.00</p>
-                                </div>
+                                {% if product.price != product.actual_price %}
+                                    <div class="bf-price">
+                                        <p class="currency">$</p>
+                                        <p class="value">{{ product.price }}</p>
+                                    </div>
+                                {% endif %}
                                 <div class="n-price">
                                     <p class="currency">$</p>
-                                    <p class="value">{{ product.price }}</p>
+                                    <p class="value">{{ product.actual_price }}</p>
                                 </div>
                             </div>
                         </div>
@@ -199,13 +201,15 @@
                                 </select>
                             </div>
                             <div class="item-prices">
-                                <div class="bf-price">
-                                    <p class="currency">$</p>
-                                    <p class="value">150.00</p>
-                                </div>
+                                {% if product.price != product.actual_price %}
+                                    <div class="bf-price">
+                                        <p class="currency">$</p>
+                                        <p class="value">{{ product.price }}</p>
+                                    </div>
+                                {% endif %}
                                 <div class="n-price">
                                     <p class="currency">$</p>
-                                    <p class="value">{{ product.price }}</p>
+                                    <p class="value">{{ product.actual_price }}</p>
                                 </div>
                             </div>
                         </div>

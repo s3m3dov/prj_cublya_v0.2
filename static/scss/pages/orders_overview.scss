@@ -14,12 +14,14 @@
         }
     }
     .order-head {
+        padding: 12px 20px;
         .left-area {
             @include flex-direction(column);
             align-items: flex-start;
             p.date {
                 color: $c2;
                 font-weight: 600;
+                margin-bottom: 5px;
             }
             .total-price {
                 @include flex;

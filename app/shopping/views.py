@@ -19,8 +19,11 @@ def categories_overview(request):
 # Product page
 def product_page(request, category_slug, prod_slug):
     product = get_object_or_404(Product, slug=prod_slug) # Get product object
+    sim_prods = Product.objects.exclude(slug=prod_slug)[:3] # Get 3 random products for testing | You Might Also Like
+
     context = {
         'product' : product,
+        'sim_prods' : sim_prods,
     }
     return render(request, 'product_page.html', context)
 
@@ -38,8 +41,8 @@ def search(request):
             Q(description__icontains=query) | 
             # Article
             Q(article__icontains=query)
-        ).filter(current_price__gte=price_from
-        ).filter(current_price__lte=price_to)
+        ).filter(actual_price__gte=price_from
+        ).filter(actual_price__lte=price_to)
     # Retieve Products if instock checked (Advanced Search)
     #if instock:
     #   products = products.filter(num_available__gte=1)

@@ -26,9 +26,9 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
     brand = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
-    price = models.DecimalField(max_digits=7, decimal_places=2)
+    price = models.DecimalField(decimal_places=2, max_digits=7,)
     discount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
-    current_price = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
+    actual_price = models.DecimalField(decimal_places=2, max_digits=7, blank=True, null=True)
     
     article = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
@@ -49,9 +49,9 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         if self.discount > 0:
-            self.current_price = self.price * (100 - self.discount) / 100
+            self.actual_price = self.price * (100 - self.discount) / 100
         else:
-            self.current_price = self.price
+            self.actual_price = self.price
         return super().save(*args, *kwargs)
     
     def get_absolute_url(self):
