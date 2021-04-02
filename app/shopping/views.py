@@ -7,8 +7,11 @@ from .models import Category, Product  # Import Models
 def categories_overview(request):
     categories = Category.objects.all()
     pop_prods = Product.objects.filter(is_popular=True) # Popular Products
+    tr_srcs = ['Men Sweatshirt', 'Women Sweatshirt', 'Beauty Product', 'Wallet', 'CPU'] # Trending Searches
+
     context = {
-        'pop_prods': pop_prods,
+        'pop_prods' : pop_prods,
+        'tr_srcs' : tr_srcs,
         'categories' : categories,
     }
     return render(request, 'categories.html', context)
@@ -30,12 +33,13 @@ def search(request):
     sorting = request.GET.get('sorting', '-date_added')
     # Retrieve Products if title/description/article matches with search term
     src_products = Product.objects.filter(
-        Q(title__icontains=query) | 
-        Q(brand__icontains=query) | 
-        Q(description__icontains=query) | 
-        # Article
-        Q(article__icontains=query)
-        ).filter(price__gte=price_from).filter(price__lte=price_to)
+            Q(title__icontains=query) | 
+            Q(brand__icontains=query) | 
+            Q(description__icontains=query) | 
+            # Article
+            Q(article__icontains=query)
+        ).filter(current_price__gte=price_from
+        ).filter(current_price__lte=price_to)
     # Retieve Products if instock checked (Advanced Search)
     #if instock:
     #   products = products.filter(num_available__gte=1)

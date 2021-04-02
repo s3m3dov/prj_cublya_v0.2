@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 from .utils import make_thumbnail
 
@@ -26,11 +27,13 @@ class Product(models.Model):
     brand = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     price = models.DecimalField(max_digits=7, decimal_places=2)
+    discount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
+    current_price = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
     
     article = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 
-    image = models.ImageField(upload_to='prod_imgs/', blank=True, null=True)
+    image = models.ImageField(upload_to='prod_imgs/')
     thumbnail = models.ImageField(upload_to='prod_thumbs/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
@@ -43,6 +46,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.discount > 0:
+            self.current_price = self.price * (100 - self.discount) / 100
+        else:
+            self.current_price = self.price
+        return super().save(*args, *kwargs)
     
     def get_absolute_url(self):
         return f'/c/{self.category.slug}/{self.slug}/' 

@@ -1,12 +1,16 @@
+{% load mathfilters %}
+
 {% for product in list_products %}
     <li class="prod-card">
         <div class="prod-top">
             <a href="{{ product.get_absolute_url }}" class="prod-link">
                 <img src="{{ product.image.url }}" class="prod-img" alt="{{ product.title }}">
             </a>
-            <div class="disc-badge">
-                <span>-75%</span>
-            </div>
+            {% if product.discount > 0 %}
+                <div class="disc-badge">
+                    <span>-{{ product.discount }}%</span>
+                </div>
+            {% endif %}
         </div>
         <div class="prod-foot">
             <div class="prod-br-rew">
@@ -25,12 +29,14 @@
                 <div class="prod-prices">
                     <div class="price-now">
                         <span class="currency">$</span>
-                        <span class="value">{{ product.price }}</span>
+                        <span class="value">{{ product.current_price }}</span>
                     </div>
-                    <div class="price-before">
-                        <span class="currency">$</span>
-                        <span class="value">100.00</span>
-                    </div>
+                    {% if product.discount > 0 %}
+                        <div class="price-before">
+                            <span class="currency">$</span>
+                                <span class="value">{{ product.price }}</span>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="prod-fav">
                     <svg xmlns="http://www.w3.org/2000/svg" class="outlined fav-icon" viewBox="0 0 24 24">

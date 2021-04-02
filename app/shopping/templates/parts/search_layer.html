@@ -1,47 +1,17 @@
 <main class="search" id="search">    
     <h2 class="sect-h">TRENDING</h2>
     <div class="trend-searches">
-        <a class="tr-search" href="search.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined tr-search-icon">
-                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <span class="tr-search-txt">
-                Sweatshirt Men
-            </span>
-        </a>
-        <a class="tr-search">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined tr-search-icon">
-                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <span class="tr-search-txt">
-                Jacket Leather
-            </span>
-        </a>
-        
-        <a class="tr-search">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined tr-search-icon">
-                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <span class="tr-search-txt">
-                Mobile Phone
-            </span>
-        </a>
-        <a class="tr-search">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined tr-search-icon">
-                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <span class="tr-search-txt">
-                CPU
-            </span>
-        </a>
-        <a class="tr-search">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined tr-search-icon">
-                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <span class="tr-search-txt">
-                Wallet
-            </span>
-        </a>
+        {# Iterating over trending searches #}
+        {% for tr_src in tr_srcs %}
+            <a class="tr-search" href="{% url 'shopping:search' %}?query={{tr_src}}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined tr-search-icon">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span class="tr-search-txt">
+                    {{ tr_src }}
+                </span>
+            </a>
+        {% endfor %}
     </div>
 
     <h2 class="sect-h">RECENT SEARCHES</h2>

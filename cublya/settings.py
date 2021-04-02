@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     # More Django Libs
     # 3rd Party
     'sass_processor',
+    'mathfilters',
     # Created
     'app.core',               # Core App
     'app.customer',           # Customer App  (Authentication, Account & Settings)
