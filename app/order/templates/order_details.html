@@ -121,7 +121,7 @@
                                     <h2 class="item-h2">{{ order_item.product.brand }}</h2>
                                     {# Temporary needs to be corrected #}
                                     <p class="item-p">Details: <span>Detail</span></p>
-                                    <p class="item-p">Price was: <span>{{ order_item.price }}</span></p>
+                                    <p class="item-p">Price was: <span>{{ order_item.price|div:order_item.quantity }}</span></p>
                                 </div>
                             </div>
                             <div class="price">
@@ -188,10 +188,10 @@
             <div class="order-details-container">
                 <div class="info-holder">
                     <p class="descr">Customer:</p>
-                    <p class="text">{{order.first_name}} {{order.last_name}}</p>
+                    <p class="text">{{address_info.first_name}} {{address_info.last_name}}</p>
                 </div>
-                <p class="descr">{{ order.address }}</p>
-                <p class="descr">{{order.city}}, {{order.country}}, {{ order.zipcode }}</p>
+                <p class="descr">{{ address_info.address }}</p>
+                <p class="descr">{{address_info.city}}, {{address_info.country}}, {{ address_info.zipcode }}</p>
             </div>
         </div>
 

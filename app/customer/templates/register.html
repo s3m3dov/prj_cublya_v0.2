@@ -40,7 +40,8 @@
                 </p>
             </div>
         </div>  
-        <form action="" class="acc-form signin-form">
+        <form action="{% url 'customer:register' %}" method="POST" class="acc-form signin-form">
+            {% csrf_token %}
             <div class="acc-form-inp-area">
                 <div class="input-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon user-icon" viewBox="0 0 24 24">
@@ -51,7 +52,7 @@
                 </div>
                 <div class="acc-form-inp-div">
                     <label class="acc-form-inp-plh" for="username">Username</label>
-                    <input type="text" class="acc-form-inp" name="username" required minlength="4" maxlength="40" autocapitalize="none">
+                    <input type="text" class="acc-form-inp" name="username" required minlength="4" maxlength="20" autocapitalize="none">
                 </div>
             </div>
             <div class="acc-form-inp-area">
@@ -64,7 +65,7 @@
                 </div>
                 <div class="acc-form-inp-div">
                     <label class="acc-form-inp-plh" for="email">Email</label>
-                    <input type="text" class="acc-form-inp" name="email" maxlength="40">
+                    <input type="text" class="acc-form-inp" name="email" required autocapitalize="none" maxlength="40">
                 </div>
             </div>
             <div class="acc-form-inp-area">
@@ -76,7 +77,7 @@
                 </div>
                 <div class="acc-form-inp-div">
                     <label class="acc-form-inp-plh" for="password">Password</label>
-                    <input type="password" class="acc-form-inp" name="password" id="acc-form-inp-pass" required minlength="10" maxlength="30">
+                    <input type="password" class="acc-form-inp" name="password" id="acc-form-inp-pass" required autocapitalize="none" minlength="10" maxlength="40">
                     <div class="pass-icon-area">
                         <svg xmlns="http://www.w3.org/2000/svg" class="eye-icon" id="open-eye-icon">
                             <title>Eye Icon</title>
@@ -99,6 +100,11 @@
                 <span>and the </span>
                 <a href="#" target="_blank">Privacy Policy</a>
             </div>
+
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+
             <button type="submit" class="btn register" id="register-btn">Register</button>
             <hr class="social-area-seperator" id="seperator-1">
             <div class="social-area">

@@ -1,23 +1,38 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.deletion import DO_NOTHING
 
 from app.shopping.models import Product
 
 
-# Order Model
+# Address Models
+class AddressInfo(models.Model):
+    user = models.ForeignKey(User, related_name='addresses', on_delete=models.SET_NULL, blank=True, null=True)
+    # assign address info to order model if user is authenticated
+
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255, blank=True, null=True)
+
+    country = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    zipcode = models.CharField(max_length=255)
+
+    #class Meta:
+        #verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}, {self.city} {self.country}"
+
+
+
+# * Order Model * 
 class Order(models.Model):
-    user = models.ForeignKey(User, related_name='orders', on_delete=models.SET_NULL, blank=True, null=True)
     # assign user info to order model if user is authenticated
-
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
-    phone = models.CharField(max_length=100, blank=True, null=True)
-
-    country = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    address = models.CharField(max_length=100)
-    zipcode = models.CharField(max_length=100)
+    user = models.ForeignKey(User, related_name='orders', on_delete=models.SET_NULL, blank=True, null=True)
+    address_info = models.ForeignKey(AddressInfo, related_name='address_info', on_delete=models.SET_NULL, blank=True, null=True) # assign address
 
     ordered_date = models.DateTimeField(auto_now_add=True)
     shipped_date = models.DateTimeField(blank=True, null=True)
@@ -26,7 +41,7 @@ class Order(models.Model):
     # status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='ordered')
 
     def __str__(self):
-        return f"{self.id} - {self.first_name} {self.last_name}"
+        return f"{self.id} | {self.address_info}"
     
     def get_absolute_path(self):
         return f'/order_details/{self.id}/' 
@@ -48,10 +63,8 @@ class Order(models.Model):
         return sum(float(item.price_off) for item in self.items.all())
 
 
-# Delivery Model
 
-
-# Order Item
+# * Order Item *
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='items', on_delete=models.DO_NOTHING)
@@ -69,3 +82,6 @@ class OrderItem(models.Model):
         self.price = self.product.price * self.quantity
         self.price_off = self.price - self.actual_price 
         return super().save(*args, *kwargs)
+
+
+# Delivery Model (Multivendor)
