@@ -20,7 +20,7 @@
                         <div class="total-price">
                             <p class="total">Total:</p>
                             <p class="currency">$</p>
-                            <p class="value">{{ order.get_total_price }}</p>
+                            <p class="value">{{ order.get_total_price|floatformat:2 }}</p>
                         </div>
                     </div>
                     <div class="right-area">

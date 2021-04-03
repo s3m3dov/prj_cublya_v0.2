@@ -3,6 +3,7 @@
 @import '../components/nav_b';                   // Navbar (B)
 
 .order-card {
+    margin-bottom: 20px;
     & > div, & > ul {
         @include flex;
         align-items: center;

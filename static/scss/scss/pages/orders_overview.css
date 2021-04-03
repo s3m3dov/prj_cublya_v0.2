@@ -347,95 +347,93 @@ h2.sect-h {
     font-size: 20px;
     font-size: 1.25rem; }
 
-.order-card > div, .order-card > ul {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  border-bottom: 1px solid #777777;
-  background-color: #2b2b2b; }
-  .order-card > div:last-child, .order-card > ul:last-child {
-    border-bottom: none; }
-
-.order-card .order-head {
-  padding: 12px 20px; }
-  .order-card .order-head .left-area {
-    -webkit-flex-direction: vertical;
-    -moz-flex-direction: vertical;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    align-items: flex-start; }
-    .order-card .order-head .left-area p.date {
-      color: #d8d5d5;
-      font-weight: 600;
-      margin-bottom: 5px; }
-    .order-card .order-head .left-area .total-price {
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      align-items: center; }
-      .order-card .order-head .left-area .total-price p.total {
-        margin-right: 4px;
-        font-size: 14px;
-        font-size: 0.875rem;
-        color: #c2c2c2; }
-      .order-card .order-head .left-area .total-price p.currency, .order-card .order-head .left-area .total-price p.value {
-        color: #0bdd8d; }
-  .order-card .order-head .right-area > p {
-    color: #0bdd8d;
-    font-size: 17px;
-    font-size: 1.0625rem; }
-
-.order-card .order-imgs .order-img {
-  margin: 3px; }
-  .order-card .order-imgs .order-img:first-child {
-    margin-left: 0 !important; }
-  .order-card .order-imgs .order-img:last-child {
-    margin-right: 0 !important; }
-  .order-card .order-imgs .order-img img {
-    height: 84px;
-    -webkit-object-position: center;
-    -moz-object-position: center;
-    -ms-object-position: center;
-    -khtml-object-position: center;
-    -o-object-position: center;
-    object-position: center;
-    -webkit-object-fit: cover;
-    -moz-object-fit: cover;
-    -ms-object-fit: cover;
-    -khtml-object-fit: cover;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -khtml-border-radius: 10px;
-    -o-border-radius: 10px;
-    border-radius: 10px; }
-
-.order-card .order-foot p.description {
-  font-size: 14px;
-  font-size: 0.875rem; }
-
-.order-card .order-foot a.see-details {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center; }
-  .order-card .order-foot a.see-details span {
-    color: #EBEBEB;
-    font-size: 15px;
-    font-size: 0.9375rem; }
-  .order-card .order-foot a.see-details svg.outlined {
-    width: 18px;
-    height: 18px; }
+.order-card {
+  margin-bottom: 20px; }
+  .order-card > div, .order-card > ul {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #777777;
+    background-color: #2b2b2b; }
+    .order-card > div:last-child, .order-card > ul:last-child {
+      border-bottom: none; }
+  .order-card .order-head {
+    padding: 12px 20px; }
+    .order-card .order-head .left-area {
+      -webkit-flex-direction: vertical;
+      -moz-flex-direction: vertical;
+      -ms-flex-direction: column;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      align-items: flex-start; }
+      .order-card .order-head .left-area p.date {
+        color: #d8d5d5;
+        font-weight: 600;
+        margin-bottom: 5px; }
+      .order-card .order-head .left-area .total-price {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center; }
+        .order-card .order-head .left-area .total-price p.total {
+          margin-right: 4px;
+          font-size: 14px;
+          font-size: 0.875rem;
+          color: #c2c2c2; }
+        .order-card .order-head .left-area .total-price p.currency, .order-card .order-head .left-area .total-price p.value {
+          color: #0bdd8d; }
+    .order-card .order-head .right-area > p {
+      color: #0bdd8d;
+      font-size: 17px;
+      font-size: 1.0625rem; }
+  .order-card .order-imgs .order-img {
+    margin: 3px; }
+    .order-card .order-imgs .order-img:first-child {
+      margin-left: 0 !important; }
+    .order-card .order-imgs .order-img:last-child {
+      margin-right: 0 !important; }
+    .order-card .order-imgs .order-img img {
+      height: 84px;
+      -webkit-object-position: center;
+      -moz-object-position: center;
+      -ms-object-position: center;
+      -khtml-object-position: center;
+      -o-object-position: center;
+      object-position: center;
+      -webkit-object-fit: cover;
+      -moz-object-fit: cover;
+      -ms-object-fit: cover;
+      -khtml-object-fit: cover;
+      -o-object-fit: cover;
+      object-fit: cover;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -khtml-border-radius: 10px;
+      -o-border-radius: 10px;
+      border-radius: 10px; }
+  .order-card .order-foot p.description {
+    font-size: 14px;
+    font-size: 0.875rem; }
+  .order-card .order-foot a.see-details {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center; }
+    .order-card .order-foot a.see-details span {
+      color: #EBEBEB;
+      font-size: 15px;
+      font-size: 0.9375rem; }
+    .order-card .order-foot a.see-details svg.outlined {
+      width: 18px;
+      height: 18px; }
 
 /*# sourceMappingURL=orders_overview.css.map */

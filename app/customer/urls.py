@@ -1,13 +1,12 @@
 from django.urls import path, include
 from django.contrib.auth.views import LogoutView
 
-from .views import account, edit_details, settings
-from .views import LoginView, RegisterView
+from .views import account, settings, EditDetailsView, LoginView, RegisterView
 
 urlpatterns = [
     path('account/', account, name="account"),
     path('account/settings/', settings, name="settings"),
-    path('account/edit_details/', edit_details, name="edit_details"),
+    path('account/edit_details/', EditDetailsView.as_view(), name="edit_details"),
 
     # Authentication
     path('login/',LoginView.as_view(), name='login'),

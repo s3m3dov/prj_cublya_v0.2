@@ -1,14 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from django.contrib import messages
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView as AuthLoginView
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.models import User
+from .models import Customer
 
+from .forms import UserUpdateForm, CustomerUpdateForm
 
 # Customer Views
 @login_required()
@@ -27,14 +29,34 @@ def settings(request):
     }
     return render(request, 'settings.html', context)
 
-@login_required()
-def edit_details(request):
-    prev_url = reverse('customer:account')
-    context = {
-        'prev_url' : prev_url,
-    }
-    return render(request, 'edit_details.html', context)
+class EditDetailsView(UpdateView, UserUpdateForm, CustomerUpdateForm):
+    def get(self, request):
+        u_form = UserUpdateForm(instance=request.user)
+        c_form = CustomerUpdateForm(instance=request.user.customer)
+        if not request.user.is_authenticated:
+            return redirect('core:home')
+        else:
+            prev_url = reverse('customer:account')
 
+            context = {
+                'prev_url' : prev_url,
+                'user_form': u_form,
+                'customer_form': c_form
+            }
+            return render(request, 'edit_details.html', context)
+
+    def post(self, request):
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        c_form = UserUpdateForm(request.POST, instance=request.user.customer)
+
+        if c_form.is_valid() and u_form.is_valid():
+            u_form.save()
+            c_form.save()
+            messages.success(request,'Your Profile has been updated!')
+
+            return redirect('customer:account')
+        else:
+            return redirect('customer:edit_details')
 
 
 

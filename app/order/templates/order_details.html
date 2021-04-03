@@ -29,7 +29,7 @@
                 <p class="descr">Total:</p>
                 <div class="price">
                     <p class="currency total">$</p>
-                    <p class="value total">{{ order.get_total_price }}2</p>
+                    <p class="value total">{{ order.get_total_price|floatformat:2 }}</p>
                 </div>
             </div>
         </div>
