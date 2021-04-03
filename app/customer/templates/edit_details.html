@@ -27,14 +27,26 @@
                 </div>
                 <div class="pd-inp-d">
                     <label for="birth-date" class="pd-label">Date of Birth:</label>
-                    <input type="date" name="birth-date" id="pd-birth-date" class="pd-inp">
+                    <input type="date" name="birth-date" id="pd-birth-date" class="pd-inp"  value="{{ request.user.customer.date_of_birth|date:'Y-m-d' }}">
                 </div>
                 <div class="pd-inp-d">
                     <label class="pd-label">Gender:</label>
                     <div class="choices">
-                        <input type="radio" id="pd-male" name="gender" value="male" class="pd-rad">
-                        <label for="pd-male">Male</label>
-                        <input type="radio" id="pd-female" name="gender" value="female" class="pd-rad">
+                        {% if request.user.customer.gender == "Male" %}
+                            <input type="radio" id="pd-male" name="gender" value="male" class="pd-rad" checked>
+                            <label for="pd-male">Male</label>
+
+                            <input type="radio" id="pd-female" name="gender" value="female" class="pd-rad">
+                        {% elif request.user.customer.gender == "Female"%}
+                            <input type="radio" id="pd-male" name="gender" value="male" class="pd-rad">
+                            <label for="pd-male">Male</label>
+
+                            <input type="radio" id="pd-female" name="gender" value="female" class="pd-rad" checked>
+                        {% else %}
+                            <input type="radio" id="pd-male" name="gender" value="male" class="pd-rad">
+                            <label for="pd-male">Male</label>
+                            <input type="radio" id="pd-female" name="gender" value="female" class="pd-rad">
+                        {% endif %}
                         <label for="pd-female">Female</label>
                     </div>
                 </div>
