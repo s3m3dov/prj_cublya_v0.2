@@ -119,12 +119,17 @@
                                 <div class="item-info">
                                     <h1 class="item-h1">{{ order_item.product.title }}</h1>
                                     <h2 class="item-h2">{{ order_item.product.brand }}</h2>
-                                    <p class="item-p">Details: <span>detail</span></p>
+                                    {# Temporary needs to be corrected #}
+                                    <p class="item-p">Details: <span>Detail</span></p>
+                                    <p class="item-p">Price was: <span>{{ order_item.price }}</span></p>
                                 </div>
                             </div>
                             <div class="price">
                                 <p class="currency">$</p>
-                                <p class="value">{{ order_item.actual_price|div:order_item.quantity }}</p>
+                                <p class="value">
+                                    {{ order_item.actual_price|div:order_item.quantity }}
+                                    <span class="qty">x{{ order_item.quantity }}</span>
+                                </p>
                             </div>
                             <a href="{{ order_item.product.get_absolute_url }}" class="small-btn"><p>Review</p></a>
                         </div>
@@ -186,7 +191,7 @@
                     <p class="text">{{order.first_name}} {{order.last_name}}</p>
                 </div>
                 <p class="descr">{{ order.address }}</p>
-                <p class="descr">{{order.city}}, {{order.country}}</p>
+                <p class="descr">{{order.city}}, {{order.country}}, {{ order.zipcode }}</p>
             </div>
         </div>
 

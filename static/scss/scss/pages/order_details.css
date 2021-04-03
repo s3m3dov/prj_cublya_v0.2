@@ -661,6 +661,10 @@ main > div {
       display: -webkit-flex;
       display: flex;
       margin-top: 3px; }
+    .sprod-item .item-content span.qty {
+      font-size: 13px;
+      font-size: 0.8125rem;
+      color: #c2c2c2; }
     .sprod-item .item-content a.small-btn {
       margin-top: 8px; }
 

@@ -87,11 +87,15 @@
         <li class="nav-item">
             <a href="{% url 'customer:login' %}" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" class="outlined nav-link-icon" viewBox="0 0 24 24">
-                    <title>Login | Register</title>
+                    <title>Account</title>
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
                 </svg>
-                Login | Register
+                {% if request.user.is_authenticated %}
+                    Account
+                {% else %}
+                    Login | Register
+                {% endif %}
             </a>
         </li>
         <div class="nav-item-sep-holder" id="nav-item-sep-holder-2">

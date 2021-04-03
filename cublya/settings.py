@@ -85,6 +85,11 @@ DATABASES = {
 }
 
 
+# Authentication
+LOGIN_URL = '/customer/login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = LOGIN_URL
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
