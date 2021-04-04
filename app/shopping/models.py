@@ -2,7 +2,7 @@ from django.db import models
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-from .utils import make_thumbnail
+from .utils import make_thumbnail, round_half_up
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
@@ -26,6 +26,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
     brand = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
+
     price = models.DecimalField(decimal_places=2, max_digits=7,)
     discount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
     actual_price = models.DecimalField(decimal_places=2, max_digits=7, blank=True, null=True)
@@ -35,6 +36,7 @@ class Product(models.Model):
 
     image = models.ImageField(upload_to='prod_imgs/')
     thumbnail = models.ImageField(upload_to='prod_thumbs/', blank=True, null=True)
+
     date_added = models.DateTimeField(auto_now_add=True)
 
     is_best_seller = models.BooleanField(default=False)
@@ -49,7 +51,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         if self.discount > 0:
-            self.actual_price = self.price * (100 - self.discount) / 100
+            self.actual_price = round_half_up((self.price * (100 - self.discount) / 100), 2)
         else:
             self.actual_price = self.price
         return super().save(*args, *kwargs)
