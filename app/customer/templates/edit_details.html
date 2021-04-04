@@ -12,48 +12,25 @@
     
     <main>
         <div class="pd-form-holder">
-            <form methods="POST" action="{% url 'customer:edit_details' %}" class="pd-form">
+            <form method="POST" action="{% url 'customer:edit_details' %}" class="pd-form">
                 {% csrf_token %}
-                <div class="pd-inp-d">
-                    <label for="fname" class="pd-label">First Name:</label>
-                    <input type="text" name="fname" id="pd-fname" class="pd-inp" value="{{ request.user.first_name }}">
-                </div>
-                <div class="pd-inp-d">
-                    <label for="lname" class="pd-label">Last Name:</label>
-                    <input type="text" name="lname" id="pd-lname" class="pd-inp"  value="{{ request.user.last_name }}">
-                </div>
-                <div class="pd-inp-d">
-                    <label for="email" class="pd-label">Email:</label>
-                    <input type="email" name="email" id="pd-email" class="pd-inp" value="{{ request.user.email }}">
-                </div>
-                <div class="pd-inp-d">
-                    <label for="date_of_birth" class="pd-label">Date of Birth:</label>
-                    <input type="date" name="date_of_birth" id="pd-birth-date" class="pd-inp"  value="{{ request.user.customer.date_of_birth|date:'Y-m-d' }}">
-                </div>
-                <div class="pd-inp-d">
-                    <label class="pd-label">Gender:</label>
-                    <div class="choices">
-                        {% if request.user.customer.gender == "Male" %}
-                            <input type="radio" id="pd-male" name="gender" value="male" class="pd-rad" checked>
-                            <label for="pd-male">Male</label>
 
-                            <input type="radio" id="pd-female" name="gender" value="female" class="pd-rad">
-                        {% elif request.user.customer.gender == "Female"%}
-                            <input type="radio" id="pd-male" name="gender" value="male" class="pd-rad">
-                            <label for="pd-male">Male</label>
-
-                            <input type="radio" id="pd-female" name="gender" value="female" class="pd-rad" checked>
-                        {% else %}
-                            <input type="radio" id="pd-male" name="gender" value="male" class="pd-rad">
-                            <label for="pd-male">Male</label>
-                            <input type="radio" id="pd-female" name="gender" value="female" class="pd-rad">
-                        {% endif %}
-                        <label for="pd-female">Female</label>
+                {% for field in user_form %}
+                    <div class="pd-inp-d">
+                        <label for="{{ field.auto_id }}" class="pd-label">{{ field.label }}</label>
+                        {{ field }}
                     </div>
-                </div>
+                {% endfor %}
+
+                {% for field in customer_form %}
+                    <div class="pd-inp-d">
+                        <label for="{{ field.auto_id }}" class="pd-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
                 
                 <div class="pd-inp-d">
-                    <label class="pd-label">Password:</label>                     
+                    <label class="pd-label">Password</label>                     
                     <div class="pd-link" id="pd-passw" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="filled lock-icon">
                             <title>Password</title>
@@ -71,7 +48,7 @@
                 </div>
 
                 <div class="pd-inp-d">
-                    <label class="pd-label">Address:</label>
+                    <label class="pd-label">Address</label>
                     <div class="pd-link" id="pd-address" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="filled lock-icon">
                             <title>Address</title>

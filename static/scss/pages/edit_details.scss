@@ -90,16 +90,17 @@ main {
             }
 
             // * Radio button choices *
-            .choices {
+            ul#choices {
+                /*
                 @include flex;
                 margin-top: 9px;
                 border-bottom: 2px solid $c4;
                 background-color: $b6;
                 padding: 10px;
                 height: 47px;
-                align-items: center;
-
-                @import '../components/radio_button';
+                align-items: center; 
+                */
+                // @import '../components/radio_button';
             }
         }
 

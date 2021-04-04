@@ -31,8 +31,8 @@ def settings(request):
 
 class EditDetailsView(UpdateView, UserUpdateForm, CustomerUpdateForm):
     def get(self, request):
-        u_form = UserUpdateForm(instance=request.user)
-        c_form = CustomerUpdateForm(instance=request.user.customer)
+        user_form = UserUpdateForm(instance=request.user)
+        customer_form = CustomerUpdateForm(instance=request.user.customer)
         if not request.user.is_authenticated:
             return redirect('core:home')
         else:
@@ -40,20 +40,20 @@ class EditDetailsView(UpdateView, UserUpdateForm, CustomerUpdateForm):
 
             context = {
                 'prev_url' : prev_url,
-                'user_form': u_form,
-                'customer_form': c_form
+                'user_form': user_form,
+                'customer_form': customer_form
             }
             return render(request, 'edit_details.html', context)
 
     def post(self, request):
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        c_form = UserUpdateForm(request.POST, instance=request.user.customer)
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        customer_form = CustomerUpdateForm(request.POST, instance=request.user.customer)
 
-        if c_form.is_valid() and u_form.is_valid():
-            u_form.save()
-            c_form.save()
-            messages.success(request,'Your Profile has been updated!')
-
+        if customer_form.is_valid() and user_form.is_valid():
+            user_form.save()
+            customer_form.save()
+            messages.success(request,'Your profile has been updated!')
+            
             return redirect('customer:account')
         else:
             return redirect('customer:edit_details')

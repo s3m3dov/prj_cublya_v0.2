@@ -15,7 +15,11 @@
                 <img src="{% static 'icons/avatar.svg '%}" alt="Profile Image">
             </div>
             <div class="name-cuts1">
-                <h1 class="profile-name">Hi, {{ request.user.first_name }}</h1>
+                <h1 class="profile-name">
+                    {% if request.user.first_name %}
+                        Hi, {{ user.first_name }}
+                    {% endif %}
+                </h1>
                 <a href="{% url 'customer:settings' %}" class="settings">
                     <svg viewBox="0 0 20 20" class="filled">
                         <title>Settings</title>
@@ -31,6 +35,12 @@
             </svg>
             <span>Edit Details</span>
         </a>
+
+        {# Needs change #}
+        {% for message in messages  %}
+            <p>{{message}}</p>
+        {% endfor %}
+
         <div class="cuts2">
             <a href="{% url 'order:orders_overview' %}" class="cuts2-links">
                 <svg viewBox="0 0 512 512" class="filled">
