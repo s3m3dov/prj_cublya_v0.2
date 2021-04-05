@@ -15,7 +15,7 @@
     <main class="search-result" id="search-result">    
         <ul class="results">
             {# Iterating over products by using reusable html/django code #}
-            {% with src_products as list_products %}
+            {% with category_products as list_products %}
                 {% include "parts/product_list.html" %}
             {% endwith %}
         </ul>

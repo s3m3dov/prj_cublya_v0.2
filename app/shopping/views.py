@@ -16,6 +16,7 @@ def categories_overview(request):
     }
     return render(request, 'categories.html', context)
 
+
 # Product page
 def product_page(request, category_slug, prod_slug):
     product = get_object_or_404(Product, slug=prod_slug) # Get product object
@@ -26,6 +27,18 @@ def product_page(request, category_slug, prod_slug):
         'sim_prods' : sim_prods,
     }
     return render(request, 'product_page.html', context)
+
+
+# Category Products Page
+def category_products(request, category_slug):
+    category = get_object_or_404(Category, slug=category_slug)
+    category_products = category.products.all() 
+    context = {
+        'category': category,
+        'category_products': category_products
+    }
+    return render(request, 'category_products.html', context)
+
 
 # Search
 def search(request):
@@ -50,7 +63,7 @@ def search(request):
     # Context for template
     context = {
         'query': query,    # Query (Searched Word)
-        'src_prods': src_products.order_by(sorting), # Products matches with query
+        'src_products': src_products.order_by(sorting), # Products matches with query
         # Filter
         #'instock': instock, 
         # Sorting

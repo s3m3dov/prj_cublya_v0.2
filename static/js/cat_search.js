@@ -1,5 +1,5 @@
-// * Search & Categories *
-//?? Search
+// * Search & Search Layer *
+//?? Search LAaer
 $("#nav-search-inp").on("click",function() {
     $(".search").addClass("visible");
     $(".cats").removeClass("visible");
@@ -7,7 +7,7 @@ $("#nav-search-inp").on("click",function() {
     $(".back-to-prev").css("display", "inherit");
 });
 
-//?? Close Search
+//?? Close Search Layer
 $("#nav-reset-btn").on("click",function() {
     if ($("#nav-search-inp").val() == "") {
         $(".cats").addClass("visible");
@@ -17,7 +17,7 @@ $("#nav-reset-btn").on("click",function() {
     }
 });
 
-//?? Back To Categories
+//?? Back To Previous
 $(".back-to-prev").on("click", function() {
     $(".main").addClass("visible");
     $(".search").removeClass("visible");

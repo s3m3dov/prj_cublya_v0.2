@@ -16,7 +16,7 @@
         <h1 class="categories-h">Categories</h1>
         <div class="boxes-container">
             {% for category in categories %}
-                <a href="#" class="box">
+                <a href="{% url 'shopping:category_products' category.slug %}" class="box">
                     <img src="{{category.image.url}}" alt="{{category.title}}">
                     <p class="cat-txt">{{category.title}}</p>
                 </a>
