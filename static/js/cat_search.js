@@ -1,5 +1,5 @@
 // * Search & Search Layer *
-//?? Search LAaer
+//?? Search Layer
 $("#nav-search-inp").on("click",function() {
     $(".search").addClass("visible");
     $(".cats").removeClass("visible");
