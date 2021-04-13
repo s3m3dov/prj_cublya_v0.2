@@ -6,9 +6,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('app.core.urls', 'core'), namespace='core')),
-    path('c/', include(('app.shopping.urls', 'shopping'), namespace='shopping')),
-    path('c/', include(('app.cart.urls', 'cart'), namespace='cart')),
-    path('', include(('app.order.urls', 'order'), namespace='order')),
+    path('', include(('app.shopping.urls', 'shopping'), namespace='shopping')),
+    path('cart/', include(('app.cart.urls', 'cart'), namespace='cart')),
+    path('order/', include(('app.order.urls', 'order'), namespace='order')),
     path('customer/', include(('app.customer.urls', 'customer'), namespace='customer')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

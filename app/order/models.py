@@ -41,7 +41,7 @@ class Order(models.Model):
         return f"{self.id} | {self.address_info}"
     
     def get_absolute_path(self):
-        return f'/order_details/{self.id}/' 
+        return f'/order/details/{self.id}/' 
 
     # Quantity of all Order Items
     def get_total_quantity(self):

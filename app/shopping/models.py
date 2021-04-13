@@ -20,7 +20,7 @@ class Category(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return f'/c/{self.slug}/'
+        return f'/{self.slug}/'
 
 
 class Product(models.Model):
@@ -67,7 +67,7 @@ class Product(models.Model):
             return 0.0
     
     def get_absolute_url(self):
-        return f'/c/{self.category.slug}/{self.slug}/' 
+        return f'/{self.category.slug}/product/{self.slug}/' 
 
 
 class ProductReview(models.Model):
