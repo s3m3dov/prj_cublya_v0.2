@@ -878,13 +878,13 @@ main {
     align-items: center;
     margin-left: auto; }
 
-.color-image, .rew-image {
+.color-image, .rev-image {
   margin: 0 5px 20px; }
-  .color-image:first-child, .rew-image:first-child {
+  .color-image:first-child, .rev-image:first-child {
     margin-left: 0 !important; }
-  .color-image:last-child, .rew-image:last-child {
+  .color-image:last-child, .rev-image:last-child {
     margin-right: 0 !important; }
-  .color-image img, .rew-image img {
+  .color-image img, .rev-image img {
     width: 78px;
     height: 114px;
     -webkit-object-position: center;

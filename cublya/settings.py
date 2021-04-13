@@ -138,3 +138,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # SASS_PROCESSOR_AUTO_INCLUDE = False
 # SASS_PROCESSOR_ENABLED = True
 SASS_PROCESSOR_ROOT = BASE_DIR / 'static/scss/'
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

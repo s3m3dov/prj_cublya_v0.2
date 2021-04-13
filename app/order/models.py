@@ -20,11 +20,8 @@ class AddressInfo(models.Model):
     address = models.CharField(max_length=255)
     zipcode = models.CharField(max_length=255)
 
-    #class Meta:
-        #verbose_name_plural = 'Categories'
-
     def __str__(self):
-        return f"{self.first_name} {self.last_name}, {self.city} {self.country}"
+        return f"{self.first_name} {self.last_name}, {self.city} {self.country} | {self.user}"
 
 
 
