@@ -1,0 +1,48 @@
+// * Mobile Navs *
+.acc-nav {
+    height: 50px;
+    @include flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 20px;
+    background-color: $b0;
+    //border-bottom: 1px solid $c2;
+    a.nav-icon-area {
+        @include flex;
+        @include transition(all $t1 ease-in-out);
+        align-items: center;
+        justify-items: center;
+
+        svg.nav-icon {
+            @include transition(all $t1 ease-in-out);
+            width: 28px;
+            height: 28px;
+            @include scale(1.1);
+            fill: $b0;
+            stroke: $c2;
+            stroke-width: 2;
+        }
+
+        &.right-zero-area {
+            margin-left: auto;
+        }
+
+        &:hover {
+            @include scale(1.2);
+            p {
+                color: $c1;
+            }
+            svg.nav-icon {
+                stroke: $c1;
+            }
+        }
+    }
+
+    h2.nav-left-h {
+        @include transition(all $t1 ease-in-out);
+        color: $c2;
+        font-weight: 600;
+        padding-left: 25px;
+        @include font-size(20px);
+    }
+}

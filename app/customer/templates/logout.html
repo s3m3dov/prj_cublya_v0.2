@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}Welcome back{% endblock %}
+{% block head_imports %}
+    <link href="{% sass_src 'scss/pages/login_register.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <main class="user-sign-register">
+        <p>You logged out</p>
+        <br>
+        <a href="{% url 'core:home' %}" class="forg-pass">Back to Shopping</a>
+        <br>
+        <a href="{% url 'customer:login' %}" class="forg-pass">Login</a>
+        <br>
+        <a href="{% url 'customer:login' %}" class="forg-pass">Register</a>
+
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/login_register.js' %}"></script>
+{% endblock %}

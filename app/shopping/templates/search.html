@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}Search{% endblock %}
+{% block head_imports %}
+    <link href="{% sass_src 'scss/pages/search.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    {% include "parts/nav_a.html" %}
+    
+    {% include "parts/searchbar_b.html" %}
+    
+    <main class="search-result" id="search-result">    
+        <ul class="results">
+            {# Iterating over products by using reusable html/django code #}
+            {% with src_products as list_products %}
+                {% include "parts/product_list.html" %}
+            {% endwith %}
+        </ul>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/nav_ani.js' %}"></script>
+    <script src="{% static 'js/search.js' %}"></script>
+{% endblock %}

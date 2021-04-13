@@ -1,0 +1,136 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/nav_b';                   // Navbar (B)
+
+main {
+    padding: 0 20px;
+}
+
+.pd-form-holder {
+    form.pd-form {
+        @include flex;
+        @include flex-direction(column);
+        padding-top: 30px;
+        margin-bottom: 120px;
+
+        // * Label *
+        label.pd-label {
+            color: $c3;
+        }
+        .pd-inp-d {
+            margin-bottom: 30px;
+            
+            // * Input *
+            input.pd-inp {
+                position: relative;
+                color: $c2;
+                background-color: $b6;
+                height: 47px;
+                width: 100%;
+                border-bottom: 2px solid $c4;
+                padding: 10px;
+                margin-top: 5px;
+                letter-spacing: 0.02rem;
+                font-weight: 400;
+                font-family: $font1;
+                @include font-size(16px);
+                @include transition(all $t1 ease-in-out);
+                &:-webkit-autofill { 
+                    @include transition(99999s);
+                }
+                &:focus {
+                    background-color: $b4;
+                }
+                &::-webkit-calendar-picker-indicator {
+                    filter: invert(0.75);
+                }
+            }
+
+            // * Links *
+            .pd-link{
+                @include flex;
+                align-items: center;
+                background-color: $b6;
+                color: $c2;
+                height: 55px;
+                border-bottom: 2px solid $c4;
+                margin-top: 5px;
+                padding: 0 18px;
+                @include transition(all $t1 ease-in-out);
+                @include font-size(17px);
+                svg {
+                    width: 35px;
+                    height: 35px;
+                    margin-right: 10px;
+                }
+                span {
+                    @include transition(all $t1 ease-in-out);
+                }
+                a.right {
+                    width: 28px;
+                    height: 28px;
+                    margin-left: auto;
+                    @include transition(all $t1 ease-in-out);
+                    svg {
+                        width: 28px;
+                        height: 28px;
+                        margin-right: unset;
+                        @include transition(all $t1 ease-in-out);
+                    }
+                }
+                &:hover {
+                    @include scale(1.01);
+                    svg {
+                        fill: $c1;
+                    }
+                    span {
+                        color: $c1;
+                    }
+                }
+            }
+
+            // * Radio button choices *
+            ul#choices {
+                /*
+                @include flex;
+                margin-top: 9px;
+                border-bottom: 2px solid $c4;
+                background-color: $b6;
+                padding: 10px;
+                height: 47px;
+                align-items: center; 
+                */
+                // @import '../components/radio_button';
+            }
+        }
+
+        // * Save Button *
+        button.btn {
+            background-color: $suc1;
+            color: $c1;
+            min-width: 160px;
+            height: 45px;
+            margin: 20px auto;
+            padding: 10px 30px;
+            @include border-radius(20px);
+            text-align: center;
+            text-transform: uppercase;
+            font-family: $font1;            
+            font-size: 1.2rem;
+            font-weight: 700;
+            user-select: none;
+            cursor: pointer;
+            @include transition($t0);
+            &:hover {
+                background: none;
+                color: $suc0;
+                border: 2px solid $suc1;
+                @include scale(1.1);
+            }
+            &:active {
+                background-color: $suc3;
+                color: $c1
+            }
+        }
+    }
+}

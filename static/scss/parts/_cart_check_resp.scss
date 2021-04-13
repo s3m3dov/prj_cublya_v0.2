@@ -1,0 +1,13 @@
+//? Extra Small Devices
+@media screen and (max-width: 300px) {
+    .sprods .sprods-head, .sprods .sprods-foot, .sprods .sprod-item, .apply-coupon, main.cart .cart-h {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .checkbox input {
+        margin-right: 4px;
+    }
+    .end-button-area .c-btn {
+        margin-left: 4px;
+    }
+}

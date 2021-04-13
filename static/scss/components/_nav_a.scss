@@ -1,0 +1,231 @@
+// * Navbar *
+.navbar {
+    @include flex;
+    height: 50px;
+    width: 100%;
+    z-index: 3;
+    position: fixed;
+    background: $b0;
+    @include transition(all $t0 ease-in);
+    &.active {
+        width: 100%;
+    }
+
+    // -- Menu btn --
+    .menu-btn {
+        @include flex;
+        align-items: center;
+        padding: 0 5px 0 14px;
+        cursor: pointer;
+        .btn-lines {
+            @include transition(all $t0 ease-out);
+            .btn-line {
+                background-color: $c2;
+                @include transition(all $t0 ease-in);
+                width: 16px;
+                height: 2px;
+                margin-bottom: 10px;
+                @include border-radius(10px);
+                &.line2 {
+                    width: 30px;
+                }
+                &.line3 {
+                    width: 22px;
+                    margin-bottom: unset;
+                }
+            }
+            &.active {
+                display: unset;
+                .btn-line {
+                    background-color: $c1;
+                    margin: unset;
+                    @include transition(all $t1 ease-in-out);
+                    &.line1 {
+                        @include transform(rotate(45deg) translate(2px, 2.5px));
+                        width: 30px;
+                    }
+                    &.line2 {
+                        @include transform(rotate(-45deg) translate(-0.3px, 1.25px));
+                    }
+                    &.line3 {
+                        transform: rotate(225deg) translate(8px, -4.5px);
+                        width: 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    // -- Nav Icon Area --
+    .navbar-icon-area {
+        margin-left: auto;
+        @include flex;
+        align-items: center;
+        padding-right: 2px;
+        @include transition(all $t1 ease-in-out);   
+        a.navbar-icon-link {
+            @include flex;
+            align-items: center;
+            margin: 0 10px;
+            cursor: pointer;
+            @include transition(all $t1 ease-in-out);   
+            svg.navbar-icon {
+                width: 28px;
+                height: 28px;
+                fill: $b0;
+                stroke: $c2;
+            }
+            &:hover {
+                @include scale(1.2);
+                svg.navbar-icon {
+                    stroke: $c1;
+                    p {
+                        color: $c1;
+                    }
+                }
+            } 
+            &#navbar-icon-link-search {
+                @include transition(all $t2 ease-in-out);
+                opacity: 0;
+                &.visible {
+                    opacity: 1;
+                }
+            }
+            &#cart-icon-link  {
+                margin-right: 4px;
+                .cart-count {
+                    @include border-radius(50%);
+                    @include flex;
+                    width: 20px;
+                    height: 20px;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $add1;
+                    margin-top: -16px;
+                    margin-left: -15px;
+                    p {
+                        font-family: $font2;
+                        color: $c0;
+                        @include font-size (12px);
+                        font-weight: 500;
+                        user-select: none;
+                    }
+                }
+            }
+        }
+    }
+
+    // -- Navbar Logo Area --
+    a.navbar-logo-area {
+        margin-left: 13px;
+        @include flex;
+        align-items: center;
+        cursor: pointer;
+        @include transition(all $t1 ease-in-out);   
+        &:hover {
+            @include scale(1.2);
+        }
+    }
+}
+
+// * Menu-Nav *
+.menu-nav {
+    z-index: 3;
+    top: 50px;
+    padding-top: 30px;
+    // left: -800px; // for tablet, portrait
+    left: -800px;
+    // width: 50%;  //for tablet
+    width: 75%;
+    height: calc(100vh - 50px);
+    background: $b0;
+    @include transition(all $t1 ease-in-out);
+    position: fixed;
+    visibility: hidden;
+    overflow-y: scroll;
+    &.active {
+        visibility: visible;
+        top: 50px;
+        left: 0;
+    }
+    ul.nav-items {
+        li.nav-item {
+            color: $c1;
+        }
+        a.nav-link {
+            @include flex;
+            height: 40px;
+            @include border-radius(10px);
+            @include transition(all $t1 ease-in-out); // it causes anime problem on desktop
+            margin: 0 14px 15px;
+            padding: 7px 18px;
+            align-items: center;
+            background-color: $b3;
+            @include font-size(15px);
+            color: $c1;
+            svg.nav-link-icon {
+                margin-right: 18px;
+                fill: none;
+                stroke: $c1;
+                @include transition(all $t1 ease-in-out);   
+                &#lang-icon, &#contact-icon, &#privacy-icon {
+                    stroke-width: 16;
+                }
+                &#cur-icon {
+                    stroke-width: 3;
+                }
+                &#blog-icon {
+                    stroke-width: 1.35;
+                }
+                &#cat-icon rect {
+                    width: 160px;
+                    height: 160px;
+                    stroke: $c1;
+                    stroke-width: 28;
+                }
+            }
+            &:hover {
+                background-color: $b4;
+                svg.nav-link-icon {
+                    @include scale(1.2);
+                }   
+            }
+            &:active {
+                background-color: $b6;
+            }
+        }
+    }
+    .nav-item-sep-holder {
+        padding: 10px 0;
+        hr.nav-item-sep {
+            height: 1px;
+            background-color: $c4;
+        }
+        &#nav-item-sep-holder-2 {
+            margin-bottom: 15px;
+        }
+    }
+    p.nav-item-sect-h {
+        padding-left: 14px;
+        margin: 10px 0 5px;
+    }
+}
+
+//---------------------------------
+// * Main and Body *
+main, footer {
+    @include transition(all $t1 ease-out);
+}
+// Main, Body, Footer after menu-nav is visible
+main.active, footer.active {
+    opacity: 0.3;
+}
+body.active {
+    overflow-y: hidden;
+}
+// main.main, footer when search is clicked
+main.visible, footer.visible {
+    display: block;
+}
+
+// Desktop Nav menu problems

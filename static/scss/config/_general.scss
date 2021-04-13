@@ -1,0 +1,240 @@
+// * ---General Stylings--- *
+// Body Setup
+body {
+    font-family: $font1;
+    background-color: $b1;
+    color: $c1;
+    // Links are in the same color as other texts
+    main {
+        padding-top: 25px;
+    }
+    a {
+        color: $c2;
+    }
+}
+// Selection
+::selection {
+    background-color: $suc1;
+    color: $c1;
+}
+// Area
+.left-area, .right-area {
+    @include flex;
+    align-items: center;
+}
+.right-area {
+    margin-left: auto;
+}
+// HR Seperator
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: $c4;
+}
+
+// * Scroll-x Container *
+.sx-cont {
+    @include flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0 20px;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// ! Cublya Special Design !
+// * Cublya SVG Setup *
+svg {
+    width: 24px;
+    height: 24px;
+    @include transition(all $t1 ease-in-out);
+    &.outlined {
+        stroke: $c1;
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    &.filled {
+        fill: $c2;    
+    }
+    &.ionicons-outlined {
+        stroke-width: 32;
+    }
+    &.iconic {
+        margin-right: 8px;
+    }
+    // Trash Icon
+    &.trash {
+        stroke: $c1;
+        fill: $b6;
+        stroke-width: 1;
+        margin-left: auto;
+    }
+    // Cublya Logo Icon
+    &.logo-c {
+        width: 20.66px;
+        height: 24px;
+        stroke: none;
+        fill: unset;
+        path#c-path1 {
+            fill: $c2;
+        }
+        path#c-path2 {
+            fill: $bran1;
+        }
+    }
+    // Coupon Icon
+    &.coupon {
+        width: 35px;
+        height: 35px;
+        g > path {
+            fill: $b1;
+        }
+        &:first-child {
+            fill: $c3;
+        }
+        &:last-child {
+            fill: $c4;
+        }
+    }
+    // Store Icon
+    &.store-icon {
+        stroke-width: 14.5;
+        fill: none;
+    }
+    // Delivery Icon
+    &.del-icon {
+        stroke: $c2;
+        stroke-width: 10;
+    }
+}
+
+// * Info Holder (Total: 1232.123) *
+p.descr {
+    color: $c3;
+    margin-right: 10px;
+    @include font-size(14px);
+}
+.red-txt {
+    color: $err1;
+}
+svg.red-txt {
+    stroke: $err1;
+}
+.info-holder {
+    @include flex;
+    padding: 2px 0;
+    align-items: center;
+    p.text {
+        @include font-size(15px);
+    }
+    .price {
+        @include flex;
+    }
+    p.total, p.discount {
+        color: $suc4;
+    }
+    &.total-info {
+        margin-top: 7px;
+        padding-top: 8px;
+        border-top: 1px solid $c5;
+        p {
+            color: $c1;
+            font-weight: 600;
+        }
+    }
+}
+// Currency Sign Right Margin
+p.currency, span.currency {
+    margin-right: 2px;
+}
+
+// * Section Header *
+h2.sect-h {
+    color: $c1;
+    font-style: normal;
+    font-weight: normal;
+    @include font-size(14px);
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+}
+.top-sx-cont {
+    @include flex;
+    a.see-more {
+        color: $c1;
+        @include font-size(14px);
+        line-height: 20px;
+        letter-spacing: 0.2px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding: 10px 20px;
+        margin-left: auto;
+    }
+}
+
+// * Final Summary *
+.final-summary {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+}
+// End-Button Area
+.end-button-area {
+    @include flex;
+    align-items: center;
+    height: 75px;
+    padding: 20px;
+    background-color: $b9;
+    // Left Area
+    .left-area {
+        @include flex;
+        align-items: center;
+        margin-right: 30px;
+        // * Up Down Button *
+        .up-down-btn {
+            @include flex;
+            @include flex-direction(column);
+            width: 28px;
+            height: 28px;
+            align-items: center;
+            @include border-radius(50%);
+            background-color: $b1;
+            cursor: pointer;
+            @include transition(all $t1 ease-in-out);
+            &.open {
+                @include rotate(- 180deg);
+            }
+            svg.up-down-icon {
+                stroke: $c0;
+            }
+        }
+        // * Total Area *
+        .total-area {
+            @include flex;
+            @include flex-direction(column);
+            margin-left: 15px;
+            p.total-txt {
+                @include font-size(15px);
+                color: $c3;
+            }
+            .price {
+                @include flex;
+                p {
+                    color: $c1;
+                    font-weight: 700;
+                    @include font-size(18px);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/nav_a';                   // Navbar (A)
+@import '../components/product_card';            // Product Card
+
+main.search-result {
+    padding: 130px 20px 50px;
+    .results {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        .prod-card {
+            width: 100%;
+            margin: 0;
+            // Adding right-margin after odd elements
+            &:nth-child(odd) {
+                margin-right: 10px !important;
+            }
+        }
+    }
+}
+
+// * Nav Search Form * '
+.nav-search-form-holder {
+    top: -200px;
+    position: absolute;
+    width: calc(100% - 28px) ;
+    margin: 0 10px;
+    @include transition(all $t2 ease-in-out);
+    z-index: -2;
+    @include flex;
+    align-items: center;
+    // .nav-search-form-holder when visible
+    &.visible {
+        z-index: 2;
+        top: 60px;
+        z-index: 2;
+        background-color: $b1;
+    }
+    // nav-search-form-holder when nav-menu opened
+    &.active {
+        opacity: 0.3;
+    }
+    // Child Eleements
+    a.back-to-prev {
+        @include flex;
+        align-items: center;
+        padding: 3px;
+        cursor: pointer;
+        display: none;
+        height: 30px;
+        svg.arrow-left {
+            stroke: $c3;
+        }
+    }
+    .search-tools {
+        @include flex;
+        margin-left: 8px;
+        div {
+            @include flex;
+            align-items: center;
+            &:first-child {
+                margin-right: 10px;
+            }
+            svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+    }
+    form.nav-search-form {   
+        @include flex;
+        border-bottom: 1px solid $c3;
+        width: 100%;
+        padding-bottom: 4px;
+        margin-left: 10px;
+        // Search Input
+        input#nav-search-inp {
+            color: $c2;
+            position: relative;
+            z-index: 1;
+            height: 40px;
+            width: 100%;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            font-family: $font1;
+            @include font-size(17px);
+            @include flex-order(2);
+            &:-webkit-autofill { 
+                @include transition(99999s);
+            }
+            &::-webkit-search-decoration,
+            &::-webkit-search-cancel-button,
+            &::-webkit-search-results-button,
+            &::-webkit-search-results-decoration {
+                -webkit-appearance:none;
+            }
+            &::-ms-clear, &::-ms-reveal {
+                display: none;
+                width: 0;
+                height: 0; 
+            }
+        }
+        // Reset & Search Icons (Buttons)
+        button.nav-search-form-btn {
+            @include flex-order(3);
+            svg.nav-search-form-icon {
+                width: 20px;
+                height: 20px;
+                stroke: $c3;
+                cursor: pointer;
+            }
+            &:hover >  svg.nav-search-form-icon {
+                stroke: $c1;
+            }
+            &#nav-search-btn {
+                @include flex-order(1);
+                padding-right: 7px;
+                @include transX(-2px);
+            }
+            &#nav-reset-btn {
+                display: none;
+                svg.nav-search-form-icon {
+                    width: 22px;
+                    height: 22px;
+                }
+            } 
+        }
+    }
+}

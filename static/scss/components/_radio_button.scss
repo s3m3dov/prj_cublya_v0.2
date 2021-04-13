@@ -1,0 +1,55 @@
+// * Radio Button *
+
+[type="radio"] {
+    // Special for checked or not checked
+    &:not(:checked) + label:after {
+        opacity: 0;
+        @include scale(0);
+    }
+    &:checked + label:after {
+        opacity: 1;    
+        @include scale(1);
+    }
+
+    // For Checked and Not Checked
+    &:checked, &:not(:checked) {
+        position: absolute;
+        left: -9999px;
+
+        &+label {
+            position: relative;
+            padding-left: 28px;
+            width: 50%;
+            cursor: pointer;
+            line-height: 20px;
+            display: inline-block;
+            color: $c2;
+
+            // Before
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 18px;
+                height: 18px;
+                border: 1px solid $c4;
+                border-radius: 100%;
+                background: $c1;
+            }
+
+            // After
+            &::after {
+                content: '';
+                width: 12px;
+                height: 12px;
+                background: $b2;
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                @include border-radius(100%);
+                @include transition(all $t1 ease);
+            }
+        }
+    }
+}

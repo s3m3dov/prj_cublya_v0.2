@@ -1,0 +1,64 @@
+<main class="search" id="search">    
+    <h2 class="sect-h">TRENDING</h2>
+    <div class="trend-searches">
+        {# Iterating over trending searches #}
+        {% for tr_src in tr_srcs %}
+            <a class="tr-search" href="{% url 'shopping:search' %}?query={{tr_src}}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="outlined tr-search-icon">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span class="tr-search-txt">
+                    {{ tr_src }}
+                </span>
+            </a>
+        {% endfor %}
+    </div>
+
+    <h2 class="sect-h">RECENT SEARCHES</h2>
+    <div class="last-searches">
+        <div class="last-search">
+            <svg viewBox="0 0 24 24"  class="outlined last-search-icon clock-icon">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <p>TMA2 WireLess</p>
+            <svg viewBox="0 0 24 24" class="outlined last-search-icon x-icon">>
+                <title>Remove</title>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <div class="last-search">
+            <svg viewBox="0 0 24 24"  class="outlined last-search-icon clock-icon">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <p>Cable</p>
+            <svg viewBox="0 0 24 24" class="outlined last-search-icon x-icon">>
+                <title>Remove</title>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <div class="last-search">
+            <svg viewBox="0 0 24 24"  class="outlined last-search-icon clock-icon">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <p>Vila stripe shirt dress</p>
+            <svg viewBox="0 0 24 24" class="outlined last-search-icon x-icon">>
+                <title>Remove</title>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+    </div>
+
+    <h2 class="sect-h">POPULAR</h2>
+    <ul class="sx-cont">
+        {# Iterating over products by using reusable html/django code #}
+        {% with pop_prods|slice:":10" as list_products %}
+            {% include "parts/product_list.html" %}
+        {% endwith %}
+    </ul>
+</main>

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}Personal Details{% endblock %}
+{% block head_imports %}
+    <link href="{% sass_src 'scss/pages/edit_details.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    {% include "parts/nav_b.html" with nav_title="Personal Details" %}
+    
+    <main>
+        <div class="pd-form-holder">
+            <form method="POST" action="{% url 'customer:edit_details' %}" class="pd-form">
+                {% csrf_token %}
+
+                {% for field in user_form %}
+                    <div class="pd-inp-d">
+                        <label for="{{ field.auto_id }}" class="pd-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+
+                {% for field in customer_form %}
+                    <div class="pd-inp-d">
+                        <label for="{{ field.auto_id }}" class="pd-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                
+                <div class="pd-inp-d">
+                    <label class="pd-label">Password</label>                     
+                    <div class="pd-link" id="pd-passw" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="filled lock-icon">
+                            <title>Password</title>
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                        </svg>
+                        <span>****************</span>
+                        <a href="" class="right">
+                            <svg viewBox="0 0 24 24" class="filled">
+                                <title>Edit</title>
+                                <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pd-inp-d">
+                    <label class="pd-label">Address</label>
+                    <div class="pd-link" id="pd-address" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="filled lock-icon">
+                            <title>Address</title>
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Nizami Abdullayev 4/41D</span>
+                        <a href="" class="right">
+                            <svg viewBox="0 0 24 24" class="filled">
+                                <title>Edit</title>
+                                <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!--
+                    <div class="pd-inp-d">
+                        <label class="pd-label">Payment:</label>
+                        <div class="pd-link" id="pd-payment" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="filled lock-icon">
+                                <title>Payment</title>
+                                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                                <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
+                            </svg>
+                            <span>**** **** **** 4444</span>
+                            <a href="" class="right">
+                                <svg viewBox="0 0 24 24" class="filled">
+                                        <title>Edit</title>
+                                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                        <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                -->
+
+                <button type="submit" class="btn save" id="save-btn">Save Changes</button>
+            </form>
+
+        </div>
+        <div class="preferred-sizes">
+            <!--
+                <p>Orda nese edib tutmadim | Adidas</p>
+            -->
+        </div>
+    </main>
+{% endblock %}

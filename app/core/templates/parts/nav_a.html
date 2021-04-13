@@ -1,0 +1,55 @@
+<header>
+    <nav>
+        <div class="navbar" id="panel">
+            <div class="menu-btn" id="menu-btn">
+                <div class="btn-lines" id="btn-lines">
+                    <div class="btn-line line1"></div>
+                    <div class="btn-line line2"></div>
+                    <div class="btn-line line3"></div>
+                    </div>
+            </div>
+            <a class="navbar-logo-area" href="{% url 'core:home' %}">
+                <svg class="logo-c" viewBox="0 0 21 24" xmlns="http://www.w3.org/2000/svg">
+                    <title>Cublya Icon | Home</title>
+                    <path id="c-path1" d="M8.20104 18.7504C9.47481 19.4613 10.8893 19.8834 12.3443 19.9869C13.9089 20.1523 14.5596 20.9332 14.5596 21.9446C14.5596 23.0293 13.8438 24 11.821 24C8.66961 23.9526 5.66336 22.6675 3.45158 20.4222C1.23979 18.1769 0 15.1517 0 12C0 8.84829 1.23979 5.82306 3.45158 3.57778C5.66336 1.33249 8.66961 0.0473728 11.821 0C14.0065 0 17.0705 0.423003 19.5489 2.4404C20.4627 3.18879 20.5278 4.49576 19.8418 5.47192C19.2561 6.35318 18.0494 6.38572 16.8428 5.74308C15.3242 4.83513 13.5903 4.35016 11.821 4.33849C10.115 4.34051 8.45856 4.91171 7.11397 5.96162C5.76938 7.01152 4.81359 8.48007 4.39801 10.1346C3.98243 11.7891 4.13083 13.5351 4.81971 15.0957C5.50858 16.6564 6.69853 17.9425 8.20104 18.7504Z"/>
+                    <path  id="c-path2" d="M16.3221 19.6615C16.3253 19.2324 16.4558 18.8138 16.6969 18.4589C16.9381 18.1039 17.2791 17.8284 17.6769 17.6673C18.0746 17.5062 18.5112 17.4667 18.9314 17.5537C19.3517 17.6408 19.7366 17.8506 20.0376 18.1565C20.3386 18.4624 20.542 18.8507 20.6223 19.2723C20.7025 19.6939 20.6559 20.1298 20.4883 20.5248C20.3208 20.9199 20.0398 21.2564 19.6809 21.4918C19.3221 21.7271 18.9015 21.8508 18.4723 21.847C17.8975 21.842 17.3481 21.609 16.945 21.1992C16.5418 20.7894 16.3177 20.2364 16.3221 19.6615Z"/>
+                </svg>
+            </a>
+            <div class="navbar-icon-area">
+                <a href="{% url 'shopping:categories_overview' %}" class="navbar-icon-link visible" id="navbar-icon-link-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="outlined navbar-icon search-icon" viewBox="0 0 24 24">
+                        <title>Search</title>
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </a>
+                <a href="#" class="navbar-icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="outlined navbar-icon heart-icon" viewBox="0 0 24 24">
+                        <title>Favorites</title>
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </a>
+                <a href="{% url 'cart:cart' %}" class="navbar-icon-link" id="cart-icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="outlined navbar-icon cart-icon" viewBox="0 0 24 24">
+                        <title>Cart</title>
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        <div class="cart-count">
+                            <p>22</p>
+                        </div>
+                    </svg>
+                </a>
+                <a href="{% url 'customer:account' %}" class="navbar-icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="outlined navbar-icon user-icon" viewBox="0 0 24 24">
+                        <title>Account</title>
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        {% include "parts/menu_nav.html" %}
+    </nav>
+</header>

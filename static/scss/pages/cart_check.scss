@@ -1,0 +1,335 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/nav_b';                   // Navbar (B)
+@import '../components/buttons';                 // Buttons
+@import '../components/checkbox';                // Checkbox
+
+
+//!!  -- Reused Items --
+// Next Header Link with chevron-right icon, (Store Name, Cart Header)
+.store-name, a.next-h-link {
+    @include flex;
+    align-items: center;
+    h1.store-name, .link-h-txt {
+        @include font-size(18px);
+        font-weight: 500;
+    }
+    span.sec {
+        @include font-size(14px);
+        font-weight: 300;
+        color: $c3;
+        margin-left: 8px;
+    }
+}
+// * Summary Area *
+.summary-area {
+    @include flex;
+    @include flex-direction(column);
+    align-items: center;
+    padding: 12px 20px;
+    background-color: $b4;
+    border-top: 1px solid $c5;
+    @include transition(all $t1 ease-in-out);
+    //----------------------------
+    &.special-final {
+        width: 100%;
+        position: relative;
+        bottom: -70px;
+        z-index: -1;
+        opacity: 0;
+        box-shadow: 0px 5px 20px -5px rgb(255, 255, 255);
+        p {
+            color: $c2;
+        }
+        &.open {
+            opacity: 1;
+            position: relative;
+            bottom: 0px;
+        }
+    }
+    //---------------------------- 
+    div {
+        @include flex;
+        align-items: center;
+        width: 100%;
+        &#discount p {
+            color: $suc4;
+        }
+        &#total p {
+            color: $c1;
+            font-weight: 600;
+            @include font-size(17px);
+        }
+        // Description & Price
+        p {
+            color: $c3;
+        }
+        p.descr {
+            @include font-size(13px);
+        }
+        .price {
+            align-self: flex-end;
+            @include flex;
+            justify-content: flex-end;
+            p {
+                @include font-size(14.5px);
+                &.currency {
+                    margin: 0 2px;
+                }
+            }   
+        }
+    }
+}
+
+// Main
+main.cc {
+    padding: 0px;
+
+    .cart-h {
+        padding: 0 20px;
+        height: 45px;
+        border-top: 1px solid $c5;
+        @include flex;
+        align-items: center;
+        color: $c1;
+        background-color: $b6;
+    }
+}
+
+//! Products that belongs to a store  
+.sprods {
+    margin: 40px 0;
+    background-color: $b6;
+    // * Store Products Header *
+    .sprods-head {
+        height: 40px;
+        padding: 0 20px;
+        @include flex;
+        align-items: center;
+        border-bottom: 1px solid $c5;
+        a.store-cart {
+            color: $c1;
+            @include flex;
+            align-items: center;
+            svg.chevron-right {
+                width: 18px;
+                height: 18px;
+                margin-left: 5px;
+                stroke-width: 2;
+                fill: $b6;
+                @include transY(1px);
+            }
+        }
+    }
+    // * Store Products Item *
+    .sprod-item {
+        padding: 17px 20px;
+        @include flex;
+        align-items: center;
+        border-bottom: 1px solid $c5;
+        // Item Photo
+        a.item-img-link {
+            @include flex;
+            align-items: center;
+            img.prod-img {
+                width: 79px;
+                height: 109.43px;
+                @include object-position(center);
+                @include object-fit(cover);
+                @include border-radius(10px);
+                //object-fit: scale-down;
+            }
+        }
+        // * Store Products Item Content *
+        .item-content {
+            width: 100%;
+            margin-left: 15px;
+            .item-f-row {
+                @include flex;
+                align-self: flex-start;
+                position: relative;
+                .item-info {
+                    @include flex;
+                    @include flex-direction(column);
+                    height: 100%;
+                    color: $c1;
+                    h1.item-h1 {
+                        @include font-size(14px);
+                        font-weight: 500;
+                    }
+                    h2.item-h2 {
+                        @include font-size(13px);
+                        font-weight: 600;
+                    }
+                    p.item-p {
+                        @include font-size(12.5px);
+                        span {
+                            @include font-size(12px);
+                            color: $c2;
+                        }
+                    }
+                }
+                svg.trash {
+                    align-self: flex-start;
+                    margin-left: auto;
+                }   
+            } 
+            .item-l-row {
+                @include flex;
+                align-self: flex-end;
+                .item-quantity {
+                    height: 30px;
+                    background-color: $b8;
+                    @include border-radius(8px);
+                    margin-right: auto;
+                    align-self: flex-end;
+                    @include flex;
+                    align-items: center;
+                    padding: 5px 7px;
+                    span {
+                        font-weight: 300;
+                        color: $c3;
+                        @include font-size(13px);
+                        margin-right: 5px;
+                    }
+                    select {
+                        color: $c1;
+                        vertical-align: middle;
+                        option {
+                            color: $c1;
+                            background-color: $b8;
+                        }
+                    }
+                }
+                .item-prices {
+                    margin-left: auto;
+                    align-self: flex-end;
+                    .bf-price, .n-price {
+                        @include flex;
+                        justify-content: flex-end;
+                    }
+                    .bf-price {
+                        @include font-size(12.5px);
+                        color: $c3;
+                        text-decoration-line: line-through;
+                        
+                    }
+                    .n-price {
+                        @include font-size(18px);
+                        color: $suc4;
+                    }   
+                } 
+            }
+        }
+    }
+    // * Store Products Footer *
+    .sprods-foot {
+        @include flex;
+        align-items: center;
+        padding: 0 20px;
+        height: 48px;
+        .sprods-sh-det {
+            font-weight: 300;
+            @include font-size(13px);
+            line-height: 16px;
+            color: $c3;
+        }
+        .sprods-sh-fee {
+            margin-left: auto;
+            @include flex;
+            align-items: center;
+            p.shipping {
+                @include font-size(14px);
+                font-weight: 300;
+            }
+            .shipping-price {
+                @include flex;
+                margin-left: 8px;
+                @include font-size(16px);
+                font-weight: 500;
+                color: $c0;
+            }
+            a.go-to-details {
+                @include flex;
+                align-items: center;
+                margin-left: 3px;
+                @include transY(-1px);
+                @include transition(all $t1 ease-in-out);
+                &:hover {
+                    @include scale(1.2);
+                }
+                svg.outlined {
+                    fill: $b6;
+                    stroke: $c0;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+    // * Note To Seller *
+    .note-to-seller {
+        @include flex;
+        align-items: center;
+        padding: 10px 20px;
+        border-top: 1px solid $c5;
+    }
+}
+// * Apply Coupon *
+.apply-coupon {
+    padding: 15px 20px;
+    margin-top: 50px;
+    margin-bottom: 250px;
+    @include flex;
+    align-items: center;
+    background-color: $b6;
+    border-bottom: 1.5px solid $c5;
+    p.app-c-txt {
+        margin-left: 12px;
+    }
+    .go-to-coupons {
+        margin-left: auto;
+        cursor: pointer;
+        @include transition(all $t1 ease-in-out);
+        @include flex;
+        @include flex-direction(column);
+        align-items: center;
+        &:hover {
+            @include scale(1.2);
+        }
+        svg.coupons {
+            stroke: $c1;
+            stroke-width: 2px;
+            fill: none;
+        }
+    }
+}
+
+//!! Checkout Special Previuos Infos
+.previous-infos {
+    padding: 0 20px;
+    .previous-info {
+        @include flex;
+        align-items: center;
+        margin: 20px 0;
+        .txts {
+            margin-left: 14px;
+            h1 {
+                font-weight: 600;
+                @include font-size(18px);
+            }
+            p {
+                @include font-size(13px);
+                color: $c3;
+            }
+        }
+        a.edit {
+            margin-left: auto;
+            @include flex;
+            align-items: center;
+        }
+    }
+}
+
+
+@import '../parts/cart_check_resp';

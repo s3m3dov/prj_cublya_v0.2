@@ -1,0 +1,28 @@
+// Social Icons
+a.social-icon {
+    height: 40px;
+    width: 40px;
+    margin: 0 .4rem;
+    @include flex;
+    justify-content: center;
+    align-items: center;
+    @include transition($t1 ease-in-out);
+    svg.soc-icon {
+        width: 30px;
+        height: 30px;
+        fill: $c4;
+        @include transition($t1);
+    }
+    &:hover {
+        svg.soc-icon {
+            fill: $c1;
+            @include scale(1.2);
+        }
+    }
+    &:active {
+        svg.soc-icon {
+            fill: $c2;
+            @include scale(1.1);
+        }
+    }
+}

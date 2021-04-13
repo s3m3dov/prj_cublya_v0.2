@@ -1,0 +1,14 @@
+{
+    "This file is just reference" : "DeSenOl?",
+    "status": "done",
+    "publicPath": "http://127.0.0.1:8080/",
+    "chunks": {
+        "app": [
+            {
+                "name": "js/app.js",
+                "publicPath":"http://127.0.0.1:8080/js/app.js", 
+                "path":"D:\\HCache\\1_Projects\\STUDY_PROJECTS\\dj_vue_TEST\\app_vue\\dist\\js\\app.js" 
+            }
+        ]
+    }
+}

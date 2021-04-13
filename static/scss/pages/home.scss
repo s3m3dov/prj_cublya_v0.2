@@ -1,0 +1,24 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/nav_a';                   // Navbar (A)
+@import '../components/product_card';            // Product Card
+@import '../components/footer';                  // Footer
+
+main.main {
+    padding: 50px 0px;
+    @include transition(all $t1 ease-out);
+    margin-bottom: 100px;
+}
+
+.carousel {
+    img {
+        width: 100vw;
+        height: calc(65vh - 50px); // This can be changed
+        @include object-position(center);
+        @include object-fit(cover);
+    }
+}
+
+.home-sect-cont {
+    padding-bottom: 30px;
+}

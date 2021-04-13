@@ -1,0 +1,72 @@
+@import 'config_browser.scss';                            // Import Browser Compatibility Config (Mixins)
+@import 'config_shortcuts.scss';                          // Import Most Used Shortcuts Config (Mixins)
+
+//! STATIC CONFIG AREA (for most projects)
+* {
+    margin: 0;
+    padding: 0;
+    @include box-sizing(border-box);
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    background: none;
+    outline: none;
+    &::before, &::after {
+        @include box-sizing(border-box);
+    }
+}
+
+//! DYNAMIC CONFIG AREA (special for this project)
+// Colors
+$c0: #f3f2f2;                  // 0-level (extra-light) color
+$c1: #EBEBEB;                  // Primary Color
+$c2: #d8d5d5;                  // Secondary Color
+$c3: #c2c2c2;                  // Tertiary Color
+$c4: #969696;                  // Quaternary  Color
+$c5: #777777;                  // Quaternary  Color
+
+
+$b0: #141618;                  // 0-level (navbar) Background Color
+$b1: #222222;                  // Primary Background Color
+$b2: #1C1E21;                  // Secondary Background Color
+
+$b7: #151618;
+$b5: #1d1d1d;                  // Quaternary Background Color
+$b8: #1b1b1b;
+$b3: #252526;                  // Tertiary Background Color
+$b4: #2b2b2b;                  // Quaternary Background Color
+$b6: #2e2d2d;                  // Quaternary Background Color
+$b9: #3d3d3d;
+
+
+$suc0:   #0ACF83;              // Success0 Color
+$suc4:   #0bdd8d;              // Success4 Color
+$suc2:   #0fe090;              // Success2 Color
+$suc3:   #08bd78;              // Success3 Color
+$suc1:   #0a9761;              // Success1 Color
+$suc5:   #1D9E6C;              // Success5 Color
+$suc6:   #035737;              // Success5 Color
+$err1:   #ff4555;              // Error 1 Color
+$err2:   #FD2D00;              // Error 1 Color
+
+$bran1:  #C06969;              // Brand1 Color
+$bran2:  #ad5151;              // Brand2 Color
+$add1:   #840A0A;              // Additional Color 1
+
+$star1: #FFC120;               // Star Color 1
+
+// Gradients
+$lg0: linear-gradient(transparent 10%, $b8 100%);
+$lg1: linear-gradient(180deg, rgba(0, 0, 0, 0) 38.73%, rgba(0, 0, 0, 0.5) 100%);
+
+// Transition Time
+$t0: 0.2s;
+$t1: 0.3s;
+$t2: 0.4s;
+$t3: 0.55s;
+$tt2: 1s 0.7s;
+$tt3: 0.2s 0.7s;
+
+// Font
+$font1: 'Nunito Sans', sans-serif;
+$font2: 'Montserrat Alternates', sans-serif;

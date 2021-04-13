@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}Settings{% endblock %}
+{% block head_imports %}
+    <link href="{% sass_src 'scss/pages/edit_details.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    {% include "parts/nav_b.html" with nav_title="Settings" %}
+
+    <main>
+        <a href="{% url 'customer:logout' %}" class="c-btn">Logout</a>
+    </main>
+{% endblock %}

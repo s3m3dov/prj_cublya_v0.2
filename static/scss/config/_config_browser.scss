@@ -1,0 +1,135 @@
+$brows : (-webkit, -moz, -ms, -khtml, -o);
+
+// * Flex *
+@mixin flex {
+    display: -webkit-box; // old
+    display: -moz-box; // old
+    display: -ms-flexbox; // ie
+    display: -webkit-flex; // new
+    display: flex; // new
+}
+@mixin flex-direction($direction) {
+    @if $direction == column {
+        -webkit-flex-direction: vertical;
+        -moz-flex-direction: vertical;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    @else if $direction == row {
+        -webkit-flex-direction: horizontal;
+        -moz-flex-direction: horizontal;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+    }
+}
+// not used so much
+@mixin box-flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex:  $values;
+    -ms-flex:  $values;
+    -webkit-flex:  $values;
+    flex:  $values;
+}
+@mixin flex-order($order){
+    -webkit-box-ordinal-group: $order; // old
+    -moz-box-ordinal-group: $order; // old
+    -ms-flex-order: $order; // ie
+    -webkit-order: $order; // new
+    order: $order; // new
+}
+
+// * Others *
+@mixin box-sizing($type) {
+    @each $brow in $brows {
+        #{$brow}-box-sizing: $type;
+    }
+    box-sizing: $type;
+}
+@mixin box-shadow($params) {
+    @each $brow in $brows {
+        #{$brow}-box-shadow: $params;
+    }
+    box-shadow: $params;
+}
+@mixin opacity($opacity) {
+    @each $brow in $brows {
+        #{$brow}-opacity: $opacity;
+    }
+    opacity: $opacity;
+}
+@mixin border-radius($radius) {
+    @each $brow in $brows {
+        #{$brow}-border-radius: $radius;
+    }
+    border-radius: $radius;
+}
+@mixin column-width ($value : 150px) {
+    @each $brow in $brows {
+        #{$brow}-column-width: $value;
+    }
+    column-width: $value;
+}
+@mixin object-fit($param) {
+    @each $brow in $brows {
+        #{$brow}-object-fit: $param;
+    }
+    object-fit: $param;
+}
+@mixin object-position($param) {
+    @each $brow in $brows {
+        #{$brow}-object-position: $param;
+    }
+    object-position: $param;
+}
+
+
+// * Transitions & Transforms *
+@mixin transition($params) {
+    @each $brow in $brows {
+        #{$brow}-transition: $params;
+    }   
+    transition: $params;
+}
+@mixin transform($params) {
+    @each $brow in $brows {
+        #{$brow}-transform: $params;
+    }   
+    transform: $params;
+}
+
+// * Gradient */
+@mixin gradient($start-color, $start-percent, $end-color, $end-percent, $orientation) {
+    background: $start-color;
+    @if $orientation == vertical {
+        // vertical
+        background: -moz-linear-gradient(top,  $start-color $start-percent, $end-color $end-percent);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop($start-percent,$start-color), color-stop($end-percent,$end-color));
+        background: -webkit-linear-gradient(top,  $start-color $start-percent,$end-color $end-percent);
+        background: -o-linear-gradient(top,  $start-color $start-percent,$end-color $end-percent);
+        background: -ms-linear-gradient(top,  $start-color $start-percent,$end-color $end-percent);
+        background: linear-gradient(to bottom,  $start-color $start-percent,$end-color $end-percent);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=0 );
+    }
+    @else if $orientation == horizontal {
+        // horizontal
+        background: -moz-linear-gradient(left,  $start-color $start-percent, $end-color $end-percent);
+        background: -webkit-gradient(linear, left top, right top, color-stop($start-percent,$start-color), color-stop($end-percent,$end-color));
+        background: -webkit-linear-gradient(left,  $start-color $start-percent,$end-color $end-percent);
+        background: -o-linear-gradient(left,  $start-color $start-percent,$end-color $end-percent);
+        background: -ms-linear-gradient(left,  $start-color $start-percent,$end-color $end-percent);
+        background: linear-gradient(to right,  $start-color $start-percent,$end-color $end-percent);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+    }
+    @else {
+        // radial
+        background: -moz-radial-gradient(center, ellipse cover,  $start-color $start-percent, $end-color $end-percent);
+        background: -webkit-gradient(radial, center center, 0px, center center, $end-percent, color-stop($start-percent,$start-color), color-stop($end-percent,$end-color));
+        background: -webkit-radial-gradient(center, ellipse cover,  $start-color $start-percent,$end-color $end-percent);
+        background: -o-radial-gradient(center, ellipse cover,  $start-color $start-percent,$end-color $end-percent);
+        background: -ms-radial-gradient(center, ellipse cover,  $start-color $start-percent,$end-color $end-percent);
+        background: radial-gradient(ellipse at center,  $start-color $start-percent,$end-color $end-percent);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+    }
+}

@@ -1,0 +1,49 @@
+footer {
+    padding: 50px 20px 20px;
+    background: $b0;
+    .top-part {
+        margin-bottom: 40px;
+        .left-part {
+            .little-about {
+                @include flex;
+                @include flex-direction(column);
+                align-items: center;
+                .description {
+                    padding: 10px 30px;
+                    p {
+                        text-align: center;
+                        @include font-size(15px);
+                        color: $c3;
+                    }
+                }
+            }
+            .footer-icons {
+                .social-icons,.app-icons {
+                    @include flex;
+                    align-items: center;
+                    justify-content: center;
+                    a.social-icon {
+                        margin: 3px;
+                    }
+                }
+                .soc-icon {
+                    fill: $c1;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+        .right-part {
+            display: none;
+        }
+    }
+    .bottom-part {
+        @include flex;
+        align-items: center;
+        justify-content: center;
+        p {
+            color: $c4;
+            @include font-size(15px);
+        }
+    }
+}

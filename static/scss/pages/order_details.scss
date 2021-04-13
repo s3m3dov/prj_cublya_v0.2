@@ -1,0 +1,203 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/nav_b';                   // Navbar (B)
+@import '../components/buttons';                 // Buttons
+
+main > div {
+    margin-bottom: 20px;
+}
+
+.order-info {
+    background-color: $b4;
+    padding: 10px 20px;
+}
+
+.order-details-card {
+    & > div {
+        @include flex;
+        align-items: center;
+        padding: 10px 20px;
+        border-bottom: 1px solid $c5;
+        background-color: $b4;
+        &:last-child { 
+            border-bottom: none; 
+        }
+        p.descr {
+            margin-right: 6px;
+        }
+    }
+    .holder {
+        width: 100%;
+        .info-line {
+            @include flex;
+            align-items: center;
+            width: 100%;
+            padding: 5px 0;
+        }
+    }
+    
+    .order-details-container {
+        @include flex;
+        @include flex-direction(column);
+        align-items: flex-start;
+        .info-holder {
+            @include flex;
+            width: 100%;
+        }
+    }
+}
+
+.next-h-link {
+    @include flex;
+    align-items: center;
+    
+    p.link-h-txt {
+        font-weight: 600;
+    }
+    .chevron-right {
+        width: 17px;
+        height: 17px;
+    }
+}
+
+// * Order Tracking Status - Progressbar *
+.order-tracking {
+	text-align: center;
+	width: 25%;
+	position: relative;
+	display: block;
+    &::before {
+        content: '';
+        display: block;
+        height: 2px;
+        width: calc(100% - 40px);
+        background-color: #4d4d4d;
+        top: 13px;
+        position: absolute;
+        left: calc(-50% + 20px);
+        z-index: 0;
+    }
+    &:first-child:before{display: none;}
+    // Is Complete Signs
+    .is-complete {
+        display: block;
+        position: relative;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        margin: 0 auto;
+        @include transition(background 0.25s linear);
+        z-index: 2;
+        border: 0px solid $c4;
+        background-color: #4d4d4d;
+        &::after {
+            display: block;
+            position: absolute;
+            content: '';
+            height: 14px;
+            width: 7px;
+            top: -2px;
+            bottom: 0;
+            left: 5px;
+            margin: auto 0;
+            border: 0px solid $c4;
+            border-width: 0px 2px 2px 0;
+            transform: rotate(45deg);
+            opacity: 0;
+        }
+    }
+    p {
+        color: $c2;
+        font-size: 16px;
+        margin-top: 8px;
+        margin-bottom: 0;
+        line-height: 20px;
+        span {
+            @include font-size(12px);
+            color: $c4;
+        }
+    }
+    // Complete Progress Styling
+    &.completed {
+        &:before{background-color: $suc3;}
+        .is-complete {
+            border-width: 0px;
+            border-color: $suc3;
+            background-color: $suc3;
+            &::after {
+                border-color: $c1;
+                border-width: 0px 3px 3px 0;
+                width: 7px;
+                left: 11px;
+                opacity: 1;
+            }
+        }
+        p {color: $suc3;}
+    }
+}
+
+// * Store Products Item *
+.sprod-item {
+    padding: 10px 0px;
+    @include flex;
+    align-items: center;
+    height: 100%;
+    // Item Photo
+    a.item-img-link {
+        @include flex;
+        align-items: center;
+        img.prod-img {
+            width: 79px;
+            height: 100%;
+            @include object-position(center);
+            @include object-fit(cover);
+            @include border-radius(10px);
+            //object-fit: scale-down;
+        }
+    }
+    // Store Products Item Content
+    .item-content {
+        width: 100%;
+        margin-left: 20px;
+        align-self: flex-start;
+        .item-f-row {
+            @include flex;
+            align-self: flex-start;
+            position: relative;
+            .item-info {
+                @include flex;
+                @include flex-direction(column);
+                height: 100%;
+                color: $c1;
+                h1.item-h1 {
+                    @include font-size(14px);
+                    font-weight: 500;
+                }
+                h2.item-h2 {
+                    @include font-size(13px);
+                    font-weight: 600;
+                }
+                p.item-p {
+                    @include font-size(12.5px);
+                    span {
+                        @include font-size(12px);
+                        color: $c2;
+                    }
+                }
+            }
+        } 
+        .price {
+            @include font-size(16px);
+            color: $suc2;
+            @include flex;
+            margin-top: 3px;
+        }
+        span.qty {
+            @include font-size(13px);
+            color: $c3;
+        }
+        a.small-btn {
+            margin-top: 8px;
+        }
+    }
+}

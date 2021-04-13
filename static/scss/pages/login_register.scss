@@ -1,0 +1,410 @@
+@import '../config/config';                      // Colors, Fonts, Mixins
+@import '../config/general';                     // General Styling
+@import '../components/social_icons';            // Social Icons
+
+// * Account Form Navs *
+.acc-form-nav {
+    width: 100%;
+    height: 50px;
+    @include flex;
+    align-items: center;
+    margin: 8px 0 10%;
+    a.nav-icon-area {
+        @include flex;
+        @include transition(all $t1 ease-in-out);
+        align-items: center;
+        justify-items: center;
+        padding: 3px; 
+        p {
+            @include transition(all $t1 ease-in-out);
+            color: $c2;
+            font-weight: 500;
+            @include font-size(14px);
+        }
+        svg.nav-icon {
+            width: 25px;
+            height: 25px;
+        }
+
+        &:hover {
+            @include scale(1.2);
+            p {
+                color: $c1;
+            }
+            svg.nav-icon {
+                stroke: $c1;
+            }
+        }
+    }
+
+    &.register-navbar {
+        .left-zero-area {
+            margin-left: 10px;
+        }
+        .right-zero-area {
+            margin-left: auto;
+            margin-right: 10px;
+        }
+    }
+}
+
+// * Main *
+main {
+    padding: 0 30px;
+    min-height: calc(100vh - 90px);
+}
+
+// * Acount Form Header *
+.acc-form-h {
+    @include flex;
+    @include flex-direction(column);
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 10px;
+    .form-h-imgs {
+        user-select: none;
+        img.form-av-img{
+            width: 80px;
+            height: 80px;
+            &#form-av-m {
+                margin-right: 10px;
+            }
+        }
+        img.form-oth-img {
+            width: 167.726px;
+            height: 119.90px;
+            margin-bottom: 15px;
+        }
+    }
+    .acc-form-hc {
+        h1.acc-form-title {
+            @include font-size(26px);
+            font-weight: 500;
+            color: $c1;
+            text-align: center;
+            margin: 5px 0;
+        }
+        p.acc-form-desc {
+            font-weight: 300;
+            font-size: .885em;
+            line-height: 1.2rem;
+            color: $c2;
+        }
+        margin-bottom: 10px;
+    }    
+}
+
+// * Account Form *
+form.acc-form {
+    margin: 0 auto;
+    @include flex;
+    align-items: center;
+    justify-content: center;
+    @include flex-direction(column);
+    max-width: 400px;
+    user-select: none;
+    // --- Form Input Area ---
+    .acc-form-inp-area {
+        max-width: 380px;
+        width: 100%;
+        height: 45px;
+        margin: 20px calc(15px + .4rem);
+        border-bottom: 2px solid $c4;
+        @include flex;
+        @include transition(all $t1 ease-in-out);
+        // -- Form Input Icons --
+        .input-icon {
+            width: 30px;
+            height: 30px;
+            .icon {
+                width: 30px;
+                height: 30px;
+                stroke: none;
+                fill: $c4;
+                @include transition(all $t1 ease-in-out);
+                &.mail-icon {
+                    stroke: $b1;
+                    stroke-width: 1.5;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    polyline {  
+                        fill: $c4;
+                    }
+                }
+            }
+        }
+        // -- Form Input Div (Placeholder and field) --
+        .acc-form-inp-div {
+            padding-left: 10px;
+            width: 100%;
+            height: 60px;
+            @include transY(-20px);
+            label.acc-form-inp-plh {
+                z-index: -2;
+                color: $c2;
+                left: 20px;
+                top: 28px;
+                position: relative;
+                @include transY(-40px);
+                @include font-size(18px);
+                @include transition(all $t1 ease-in-out);
+            }
+            input.acc-form-inp {
+                color: $c2;
+                position: relative;
+                height: 60px;
+                width: 100%;
+                letter-spacing: 0.02rem;
+                font-weight: 400;
+                font-family: $font1;
+                @include transY(-10px);
+                @include font-size(17px);
+                &:-webkit-autofill { 
+                    @include transition(99999s);
+                }
+                &#acc-form-inp-pass {
+                    width: calc(100% - 36px);
+                }
+            }
+            .pass-icon-area {
+                position: relative;
+                margin-left: auto;
+                @include flex;
+                @include flex-direction(column);
+                align-items: center;
+                justify-items: center;
+                padding: 3px;
+                width: 30px;
+                cursor: pointer;
+                background-color: $b1;
+                @include transY(-58px);
+                @include transition(all $t1 ease-in-out);
+                svg.eye-icon {
+                    fill: $c2;
+                    stroke: $b1;
+                    stroke-width: 2;
+                    &#open-eye-icon {
+                        display: unset;
+                    }
+                    &#close-eye-icon {
+                        display: none;
+                        fill: $c2;
+                        line {
+                            stroke: $c2;
+                        }
+                    }
+                }
+            }   
+        }
+
+        // -- When Focused --
+        &.inp-f {
+            border-bottom: 2px solid $c1;
+            .icon {
+                fill: $c1;
+                &.mail-icon polyline {
+                    fill: $c1;
+                }
+            }
+            .acc-form-inp-div {
+                label.acc-form-inp-plh {
+                    left: 0px;
+                    top: 0px;
+                    @include font-size(14px);
+                    color: $c1;
+                }
+                input.acc-form-inp {
+                    color: $c1;
+                }
+            }
+        }
+        // -- When Valid --
+        &.inp-v {
+            border-bottom: 2px solid $suc4;
+        }
+        // -- When Invalid --
+        &.inp-i {
+            border-bottom: 2px solid $err1;
+        }
+    }
+
+    // * Forgot Password *
+    a.forg-pass {
+        align-self: flex-end;
+        color: $c4;
+        text-decoration: underline;
+        @include transY(-10px);
+        margin-bottom: 5px;
+        @include transition($t1);
+        &:hover {   
+            color: $c1;
+        }
+    }
+    // * Password Requirements
+    .password-requirements {
+        @include transY(-12px);
+        margin-bottom: 5px;
+        p {
+            @include font-size(13px);
+            line-height: 15px;
+            color: $c4;
+        }
+    }
+    .accept-term {
+        margin-bottom: 15px;
+        span, a {
+            color: $c4;
+            @include font-size(14px);
+        }
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    // * Submit Button *
+    .btn {
+        background-color: $suc1;
+        color: $c1;
+        min-width: 160px;
+        height: 45px;
+        margin: 5px auto 20px auto;
+        @include border-radius(50px);
+        text-align: center;
+        text-transform: uppercase;
+        font-family: $font1;            
+        font-size: 1.2rem;
+        font-weight: 700;
+        user-select: none;
+        cursor: pointer;
+        @include transition($t0);
+        &:hover {
+            background: none;
+            color: $suc0;
+            border: 2px solid $suc1;
+            @include scale(1.1);
+        }
+        &:active {
+            background-color: $suc3;
+            color: $c1
+        }
+    }
+    // * Social Area *
+    hr.social-area-seperator {
+        z-index: -1;
+        width: 100%;
+        height: 1px;
+        color: $c2;
+        background-color: $c2;
+        &#seperator-1 {
+            @include transY(30px);
+        }
+        
+    }
+    .social-area {
+        @include flex;
+        @include flex-direction(column);
+        margin: 7px 0;
+        p.social-text {
+            text-align: center;
+            padding: 10px;
+            font-size: 1rem;
+            color: $c2;
+            background-color: $b1;
+        }
+        // -- Social Media Icons Holder --
+        .social-icons {
+            @include flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            
+        }   
+    }
+}
+
+// * Account Form Foot *
+.acc-form-foot {
+    max-width: 400px;
+    margin: 10px auto;
+    @include flex;
+    display: none;
+    p.acc-form-soru {
+        color: $c4;
+        font-weight: 300;
+        @include transition(all $t1 ease-in-out);
+    }
+    span.acc-form-sor-link {
+        margin-left: auto;
+        a {
+            color: $c2;
+            text-decoration: underline;
+            &:hover {
+                @include transition(all $t1 ease-in-out);
+                color: $c1;
+            }
+        } 
+    }
+}
+
+// * Shapes *
+.shapes {
+    width: 100%;
+    height: 90px;
+    overflow: hidden;
+    margin-top: 40px;
+    bottom: 0;
+    .circle {
+        background-color: $suc1;
+        width: 4000px;
+        height: 4000px;
+        @include border-radius(50%);
+        @include transX(-45%);
+        @include transition(all $t1 ease-in-out);
+        &:hover {
+            background-color: $suc0;
+        }
+
+    }
+}
+
+//? Tablet - Portrait & Landscape
+@media screen and (min-width: 768px) {
+
+    // * Form Header *
+    .acc-form-h {
+        .form-av-imgs {
+            img.form-av-img{
+                width: 100px;
+                height: 100px;
+                &#form-av-m {
+                    margin-right: 25px;
+                }
+            }
+        }
+        .acc-form-hc {
+            h1.acc-form-title {
+                font-size: 2rem;
+                font-weight: 600;
+                padding: 5px 0;
+            }
+            p.acc-form-desc {
+                font-size: 1.3rem;
+                line-height: 1.4rem;
+            }
+            margin-bottom: 20px;
+        }   
+    }
+
+    // * Shapes *
+    .shapes {
+        margin: unset;
+    }
+}
+
+//? Laptop and Desktop 
+@media screen and (min-width: 1171px) {
+
+    // * Shapes *
+    .shapes {
+        margin: unset;
+    }
+}

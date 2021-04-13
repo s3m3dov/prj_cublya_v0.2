@@ -1,0 +1,73 @@
+//? Transform Shortcuts
+@mixin scale($params) {
+    @each $brow in $brows {
+        #{$brow}-transform: scale($params);
+    }   
+    transform: scale($params);
+}
+@mixin rotate($params) {
+    @each $brow in $brows {
+        #{$brow}-transform: rotate($params);
+    }   
+    transform: rotate($params);
+}
+@mixin translate($x, $y) {
+    @each $brow in $brows {
+        #{$brow}-transform: translate($x, $y);
+    } 
+    transform: translate($x, $y);
+}
+@mixin transX($x) {
+    @each $brow in $brows {
+        #{$brow}-transform: translateX($x);
+    } 
+    transform: translateX($x);
+}
+@mixin transY($y) {
+    @each $brow in $brows {
+        #{$brow}-transform: translateY($y);
+    } 
+    transform: translateY($y);
+}
+//? Others 
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: ($size / 16px) * 1rem;
+}
+@mixin ghost-button($font, $font-size, $font-color, $border-size, $border-color, $padding, $transition-speed, $hover-color) {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: $font;
+    font-size: $font-size;
+    color: $font-color;
+    border: $border-size solid $border-color;
+    padding: $padding;
+    -webkit-transition: color $transition-speed, background $transition-speed;
+    transition: color $transition-speed, background $transition-speed;
+    &:hover {
+        background: $border-color;
+        color: $hover-color;
+    }
+}
+//! I don't need these:
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    @each $brow in $brows {
+        #{$brow}-transform: translateY(-50%);
+    } 
+    transform: translateY(-50%);
+}
+@mixin break-point($point) {
+    @if $point == desktop{
+        @media only screen and (max-width:50em) {
+            @content;
+        }
+    }
+    @else if $point == mobile {
+        @media only screen and (max-width:20em) {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}My Orders{% endblock %}
+{% block head_imports %}
+    <link href="{% sass_src 'scss/pages/orders_overview.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    {% include "parts/nav_b.html" with nav_title="My Orders" %}
+    
+    <main>
+        
+        {% for order in request.user.orders.all %}
+            <div class="order-card">
+                <div class="order-head">
+                    <div class="left-area">
+                        <p class="date">{{ order.ordered_date|date:"j F Y, l" }}</p>
+                        <div class="total-price">
+                            <p class="total">Total:</p>
+                            <p class="currency">$</p>
+                            <p class="value">{{ order.get_total_price|floatformat:2 }}</p>
+                        </div>
+                    </div>
+                    <div class="right-area">
+                        <p>Shipped</p>
+                    </div>
+                </div>
+
+                <ul class="order-imgs sx-cont">
+                    {% for order_item in order.items.all %}
+                        <li class="order-img">
+                            <img src="{{ order_item.product.image.url }}" alt="{{ order_item.product.title }}">
+                        </li>
+                    {% endfor %}
+                    
+
+                </ul>
+
+                <div class="order-foot">
+                    <div class="left-area">
+                        <p class="description">
+                            {{ order.get_total_quantity }} item(s) have been shipped
+                        </p>
+                    </div>
+                    <div class="right-area">
+                        <a href="{{ order.get_absolute_path }}" class="see-details">
+                            <span>See Details</span>
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="outlined">
+                                <title>See Details</title>
+                                <path d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </main>
+{% endblock %}

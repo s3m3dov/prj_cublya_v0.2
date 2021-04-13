@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}For Your Convenience{% endblock %}
+{% block head_imports %}
+    <link href="{% sass_src 'scss/pages/home.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    {% include "parts/nav_a.html" %}
+
+    <main class="main visible" id="home">
+        <div class="carousel">
+            <img src=" {% static 'img/1.jpg' %}"  alt="Banner Image">
+        </div>
+
+        <div class="home-sect-cont">
+            <div class="top-sx-cont">
+                <h2 class="sect-h">BEST SELLERS</h2>
+                <a href="" class="see-more">See More</a>
+            </div>
+            <ul class="sx-cont">
+                {# Iterating over products by using reusable html/django code #}
+                {% with bs_prods|slice:":10" as list_products %}
+                    {% include "parts/product_list.html" %}
+                {% endwith %}
+            </ul>
+        </div>
+
+        <div class="home-sect-cont">
+            <div class="top-sx-cont">
+                <h2 class="sect-h">TOP SALE</h2>
+                <a href="" class="see-more">See More</a>
+            </div>
+            <ul class="sx-cont">
+                {# Iterating over products by using reusable html/django code #}
+                {% with ts_prods|slice:":10" as list_products %}
+                    {% include "parts/product_list.html" %}
+                {% endwith %}
+            </ul>
+        </div>
+    </main>
+
+    {% include "parts/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/nav_ani.js' %}"></script>
+{% endblock %}

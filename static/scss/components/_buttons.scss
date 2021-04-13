@@ -1,0 +1,56 @@
+// ! Buttons !
+// * Small Simple Button *
+.small-btn {
+    background-color: $suc5;
+    @include border-radius(10px);
+    @include flex;
+    width: 70px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    @include transition(all $t1 ease-in-out);
+    &:hover {
+        @include scale(1.05);
+        background-color: $suc3;
+    }
+    p {
+        color: $c0;
+        @include font-size(14px);
+        font-weight: 500;
+        font-family: $font1;
+    }
+}
+// * C-Button (Nexted Link Button)*
+.c-btn {
+    background-color: $suc5;
+    color: $c1;
+    @include border-radius(10px);
+    height: 50px;
+    width: 100%;
+    max-width: 170px;
+    margin-left: auto;
+    @include flex;
+    align-items: center;
+    padding: 20px 10px 20px 25px;
+    cursor: pointer;
+    @include transition(all $t1 ease-in-out);
+    &:hover {
+        @include scale(1.05);
+        background-color: $suc3;
+    }
+    p {
+        color: $c0;
+        @include font-size(17px);
+        font-weight: 600;
+        font-family: $font1;
+    }
+    svg.outlined {
+        margin-left: auto;
+        width: 28px;
+        height: 28px;
+        stroke: $c0;
+        stroke-width: 2px;
+        fill: none;
+    }
+}

@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}{{ product.title }}{% endblock %}
+{% block head_imports %}
+    <link href="{% sass_src 'scss/pages/product_page.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    {% include "parts/nav_a.html" %}
+    <main class="cc" id="cart">
+        <div class="prod-image-div">
+            <img src="{{ product.image.url }}" class="prod-image" alt="{{ product.title }}">
+        </div>
+        <div class="prod-first-area prod-area">
+            <div class="prod-first-row prod-row">
+                <div class="left-holder">
+                    <p class="brand">{{ product.brand }}</p>
+                    <p class="title">{{ product.title }}</p>
+                </div>
+                <a href="" class="add-to-favs">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="outlined" viewBox="0 0 24 24">
+                        <title>Add to List</title>
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    {# Needs to change #}
+                    <span class="like-counts">1</span>
+                </a>
+            </div>
+            <div class="prod-second-row prod-row">
+                <a class="prod-rew">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="filled rew-star">
+                        <title>Reviews</title>
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <span class="star-cnt">{{ product.get_rating }}</span>
+                    <span href="" class="rew-cnt">({{ product.reviews.count }})</span>
+                </a>
+                {% if product.items.count > 1 %}
+                    <div class="orders">
+                        <p>{{ product.items.count }} orders</p>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="prod-third-row prod-row">
+                <div class="color-size">
+                    <div class="prod-sect-top">
+                        <p>21 Color(s), 5 Size</p>
+                        <a href="#" class="chevron-r">
+                            <svg viewBox="0 0 24 24" class="outlined">
+                                <title>See Details</title>
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="color-images sx-cont">
+                        <div class="color-image">
+                            <img src="img/prods/1.jpg" alt="nanan" srcset="">
+                        </div>
+                        <div class="color-image">
+                            <img src="img/prods/1.jpg" alt="nanan" srcset="">
+                        </div>
+                        <div class="color-image">
+                            <img src="img/prods/1.jpg" alt="nanan" srcset="">
+                        </div>
+                        <div class="color-image">
+                            <img src="img/prods/1.jpg" alt="nanan" srcset="">
+                        </div>
+                        <div class="color-image">
+                            <img src="img/prods/1.jpg" alt="nanan" srcset="">
+                        </div>
+                        <div class="color-image">
+                            <img src="img/prods/1.jpg" alt="nanan" srcset="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prod-sect-top">
+                    <p>Specifications</p>
+                    <a href="#" class="chevron-r">
+                        <svg viewBox="0 0 24 24" class="outlined">
+                            <title>See Details</title>
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+                <div class="prod-sect-top">
+                    <p>Description</p>
+                    <a href="#" class="chevron-r">
+                        <svg viewBox="0 0 24 24" class="outlined">
+                            <title>See Details</title>
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="prod-second-area prod-area">
+            <div class="prod-sect-top">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="coupon sect-top-left-icon">
+                    <title>Coupon</title>
+                    <path d="M503.172,114.759H392.828c-2.438,0-4.414,1.976-4.414,4.414v3.915  c0,9.506-7.306,17.686-16.801,18.134c-10.138,0.478-18.509-7.602-18.509-17.635v-4.414c0-2.438-1.976-4.414-4.414-4.414H8.828  c-4.875,0-8.828,3.953-8.828,8.828v264.828c0,4.875,3.953,8.828,8.828,8.828H348.69c2.438,0,4.414-1.976,4.414-4.414v-3.915  c0-9.506,7.306-17.686,16.801-18.134c10.138-0.478,18.509,7.602,18.509,17.635v4.414c0,2.438,1.976,4.414,4.414,4.414h110.345  c4.875,0,8.828-3.953,8.828-8.828V123.586C512,118.711,508.047,114.759,503.172,114.759z M379.586,344.276  c0,4.875-3.948,8.828-8.828,8.828c-4.879,0-8.828-3.953-8.828-8.828v-17.655c0-4.875,3.948-8.828,8.828-8.828  c4.879,0,8.828,3.953,8.828,8.828V344.276z M379.586,291.31c0,4.875-3.948,8.828-8.828,8.828c-4.879,0-8.828-3.953-8.828-8.828  v-17.655c0-4.875,3.948-8.828,8.828-8.828c4.879,0,8.828,3.953,8.828,8.828V291.31z M379.586,238.345  c0,4.875-3.948,8.828-8.828,8.828c-4.879,0-8.828-3.953-8.828-8.828V220.69c0-4.875,3.948-8.828,8.828-8.828  c4.879,0,8.828,3.953,8.828,8.828V238.345z M379.586,185.379c0,4.875-3.948,8.828-8.828,8.828c-4.879,0-8.828-3.953-8.828-8.828  v-17.655c0-4.875,3.948-8.828,8.828-8.828c4.879,0,8.828,3.953,8.828,8.828V185.379z"></path>
+                    <g>
+                        <path d="M97.103,346.483c-2.828,0-5.646-1.078-7.801-3.233c-4.31-4.31-4.31-11.293,0-15.604l158.897-158.897   c4.31-4.31,11.293-4.31,15.604,0c4.311,4.31,4.31,11.293,0,15.604L104.906,343.25C102.75,345.405,99.932,346.483,97.103,346.483z"></path>
+                        <path d="M123.586,249.379c-25.551,0-46.345-20.789-46.345-46.345s20.793-46.345,46.345-46.345   s46.345,20.789,46.345,46.345S149.138,249.379,123.586,249.379z M123.586,178.759c-13.388,0-24.276,10.888-24.276,24.276   c0,13.388,10.888,24.276,24.276,24.276s24.276-10.888,24.276-24.276C147.862,189.646,136.974,178.759,123.586,178.759z"></path>
+                        <path d="M229.517,355.31c-25.551,0-46.345-20.789-46.345-46.345s20.793-46.345,46.345-46.345   s46.345,20.789,46.345,46.345S255.069,355.31,229.517,355.31z M229.517,284.69c-13.388,0-24.276,10.888-24.276,24.276   s10.888,24.276,24.276,24.276s24.276-10.888,24.276-24.276S242.905,284.69,229.517,284.69z"></path>
+                    </g>
+                    <path d="M379.586,167.724v17.655c0,4.875-3.948,8.828-8.828,8.828v17.655c4.879,0,8.828,3.953,8.828,8.828  v17.655c0,4.875-3.948,8.828-8.828,8.828v17.655c4.879,0,8.828,3.953,8.828,8.828v17.655c0,4.875-3.948,8.828-8.828,8.828v17.655  c4.879,0,8.828,3.953,8.828,8.828v17.655c0,4.875-3.948,8.828-8.828,8.828v17.655c9.75,0,17.655,7.905,17.655,17.655v4.414  c0,2.438,1.976,4.414,4.414,4.414h110.345c4.875,0,8.828-3.953,8.828-8.828V123.586c0-4.875-3.953-8.828-8.828-8.828H392.828  c-2.438,0-4.414,1.976-4.414,4.414v4.414c0,9.75-7.905,17.655-17.655,17.655v17.655  C375.638,158.897,379.586,162.849,379.586,167.724z"></path>
+                </svg>
+                <p>Discounts & Coupons</p>
+                <a href="#" class="chevron-r">
+                    <svg viewBox="0 0 24 24" class="outlined">
+                        <title>See Details</title>
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <div class="shipping-row">
+                <div class="prod-sect-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="filled sect-top-left-icon">
+                        <title>Shipping</title>
+                        <path fill="none" d="M17.434 9L15 9 15 12 19.233 12z"></path>
+                        <circle fill="none" cx="16.5" cy="17.5" r="1.5"></circle>
+                        <circle fill="none" cx="6.5" cy="17.5" r="1.5"></circle>
+                        <path d="M19.148,7.971C18.789,7.372,18.132,7,17.434,7H15V5c0-0.553-0.447-1-1-1H4C2.897,4,2,4.897,2,6v10 c0,0.746,0.416,1.391,1.023,1.734C3.146,19.553,4.65,21,6.5,21c1.759,0,3.204-1.309,3.449-3h3.102c0.245,1.691,1.69,3,3.449,3 s3.204-1.309,3.449-3H20c1.103,0,2-0.897,2-2v-3c0-0.182-0.049-0.359-0.143-0.515L19.148,7.971z M15,9h2.434l1.8,3H15V9z M6.5,19 C5.673,19,5,18.327,5,17.5S5.673,16,6.5,16S8,16.673,8,17.5S7.327,19,6.5,19z M16.5,19c-0.827,0-1.5-0.673-1.5-1.5 s0.673-1.5,1.5-1.5s1.5,0.673,1.5,1.5S17.327,19,16.5,19z"></path>
+                    </svg>
+                    <p>Shipping:
+                        <span class="currency">$</span>
+                        <span class="value">500.25</span></p>
+                    <a href="#" class="chevron-r">
+                        <svg viewBox="0 0 24 24" class="outlined">
+                            <title>See Details</title>
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+                <div class="shipping-desc">
+                    <p>To Azerbaijan via XXX</p>
+                    <p>Estimated Delivery: 2312-1233 years</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prod-second-area prod-area">
+            <div class="prod-sect-top">
+                <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="outlined store-icon sect-top-left-icon">
+                    <title>Store</title>
+                    <path d="M48,139.58816V208a8,8,0,0,0,8,8H200a8,8,0,0,0,8-8V139.58972"></path>
+                    <path d="M54.03441,40H201.96559a8,8,0,0,1,7.69219,5.80223L224,96H32L46.34222,45.80223A8,8,0,0,1,54.03441,40Z"></path>
+                    <path d="M96,96v16a32,32,0,0,1-64,0V96"></path>
+                    <path d="M160,96v16a32,32,0,0,1-64,0V96"></path>
+                    <path d="M224,96v16a32,32,0,0,1-64,0V96"></path>
+                </svg>
+                <p>Koton Fashion Store</p>
+                <p class="rating">9.5</p>
+                <a href="#" class="chevron-r">
+                    <svg viewBox="0 0 24 24" class="outlined">
+                        <title>See Details</title>
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <div class="prod-sect-top">
+                <p>Questions & Answers</p>
+                <a href="#" class="chevron-r">
+                    <svg viewBox="0 0 24 24" class="outlined">
+                        <title>See Details</title>
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <div class="prod-sect-top">
+                <p>Other Stores</p>
+                <a href="#" class="chevron-r">
+                    <svg viewBox="0 0 24 24" class="outlined">
+                        <title>See Details</title>
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+
+        <div class="top-sx-cont">
+            <h2 class="sect-h">YOU ALSO MIGHT LIKE</h2>
+        </div>
+        <ul class="sx-cont">
+            {# Iterating over products by using reusable html/django code #}
+            {% with sim_prods as list_products %}
+                {% include "parts/product_list.html" %}
+            {% endwith %}
+        </ul>
+
+        <div class="prod-reviews prod-area">
+            <div class="prod-sect-top">
+                <p>Customer Reviews ({{ product.reviews.count }})</p>
+                <a href="#" class="chevron-r prod-rew">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="filled rew-star">
+                        <title>Reviews</title>
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                    <span class="star-cnt">{{ product.get_rating|floatformat:1 }} / 5</span>
+                    <svg viewBox="0 0 24 24" class="outlined">
+                        <title>See Details</title>
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <div class="rev-images sx-cont">
+                <div class="rev-image">
+                    <img src="img/prods/1.jpg" alt="" srcset="">
+                </div>
+                <div class="rev-image">
+                    <img src="img/prods/1.jpg" alt="" srcset="">
+                </div>
+                <div class="rev-image">
+                    <img src="img/prods/1.jpg" alt="" srcset="">
+                </div>
+                <div class="rev-image">
+                    <img src="img/prods/1.jpg" alt="" srcset="">
+                </div>
+                <div class="rev-image">
+                    <img src="img/prods/1.jpg" alt="" srcset="">
+                </div>
+                <div class="rev-image">
+                    <img src="img/prods/1.jpg" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+        {# Temporary (just for testing) #}
+        <div class="reviews-preview" id="temporary">
+            {% for product_review in product.reviews.all  %}
+                <p class="user-info">{{ product_review.user.first_name }} {{ product_review.user.last_name }} <p>
+                <p class="star">{{ product_review.stars }}</p>
+                <p class="content">{{ product_review.content }}</p>
+                <!--
+                <p class="store">This product has been bought from <a href="link-to-product">XXX</a> store</p>
+                -->
+            {% empty %}
+                <p>There is no review</p>
+            {% endfor %}
+        </div>
+            
+        <div class="final-summary">
+            <div class="end-button-area">
+                <div class="left-area">
+                    
+                    <div class="total-area">
+                        <div class="price">
+                            <p class="currency">$</p>
+                            <p class="value">{{ product.actual_price|floatformat:2 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="cart.html" class="c-btn">
+                    <p>Add to Cart</p>
+                    <svg viewBox="0 0 24 24" class="outlined">
+                        <title>Add to Cart</title>
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/nav_ani.js' %}"></script>
+{% endblock %}
