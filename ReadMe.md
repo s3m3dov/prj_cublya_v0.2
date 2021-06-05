@@ -15,12 +15,13 @@ npm run serve
 virtualenv .env
 source .env/bin/activate
 ```
-> or
+or
 ```
 py -m venv env
 env\Scripts\activate
 ```
-> then
+
+then
 ```
 pip install -r requirements.txt
 python manage.py migrate
